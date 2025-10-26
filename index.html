@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>German</title>
+     <link rel="icon" href="/assets/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 2;
+            margin-top: 60px;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(90deg, #fff, #4fc3f7, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 0 10px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            margin-bottom: 40px;
+            max-width: 700px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            padding: 0 15px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 15px 40px;
+            font-size: clamp(16px, 2vw, 18px);
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin: 10px;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            transform: translateY(-5px);
+            box-shadow: 
+                0 8px 20px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .features-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 30px 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #4fc3f7;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .feature-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .stats-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            margin: 50px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .stat-item {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #4fc3f7;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 50px 0 30px;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .testimonial-section {
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            text-align: right;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .nav-left {
+                width: 100%;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+            
+            .search-container {
+                width: 100%;
+            }
+            
+            .search-input {
+                width: 100%;
+                height: 44px;
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+            
+            .dropdown {
+                left: 10px;
+                right: 10px;
+                width: auto;
+                top: 100px;
+            }
+            
+            .features-section {
+                padding: 20px 15px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+                margin: 10px 0;
+                min-height: auto;
+            }
+            
+            .feature-icon {
+                font-size: 2.5rem;
+                margin-bottom: 15px;
+            }
+            
+            .feature-title {
+                font-size: 1.3rem;
+                margin-bottom: 10px;
+            }
+            
+            .feature-description {
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+            
+            .stats-section {
+                padding: 30px 15px;
+                gap: 20px;
+            }
+            
+            .stat-item {
+                width: calc(50% - 20px);
+                margin: 10px;
+            }
+            
+            .stat-number {
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
+            }
+            
+            .stat-label {
+                font-size: 0.9rem;
+            }
+            
+            .section-title {
+                font-size: clamp(1.8rem, 4vw, 2.5rem);
+                margin: 30px 0 20px;
+            }
+            
+            /* Improve touch targets */
+            button,
+            .nav-links a,
+            .dropdown a {
+                min-height: 44px;
+                min-width: 44px;
+                padding: 12px 20px;
+                margin: 5px 0;
+            }
+            
+            /* Better spacing for mobile */
+            .container {
+                margin-top: 60px;
+            }
+            
+            footer {
+                padding: 20px 15px;
+            }
+            
+            footer p {
+                font-size: 12px;
+                line-height: 1.4;
+            }
+        }
+        
+        /* Landscape mode optimizations */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero-section {
+                padding: 40px 20px;
+            }
+            
+            .features-section {
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            }
+        }
+        
+        /* Tablet optimizations */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-section {
+                padding: 80px 30px;
+            }
+            
+            .features-section {
+                padding: 40px 30px;
+                gap: 25px;
+            }
+            
+            .feature-card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <button class="menu-btn" id="menuBtn">MENU</button>
+        </div>
+    </nav>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown" id="dropdown">
+        <a href="index.html">Home</a>
+        <a href="/html/conversation.html">Conversations</a>
+        <a href="/html/vocaublary.html">Vocabulary</a>
+        <a href="/html/grammer.html">Grammar</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">Master German with Ease</h1>
+            <p class="hero-subtitle">Immerse yourself in the German language through interactive conversations, vocabulary building, and grammar practice designed for all proficiency levels.</p>
+            <div>
+                
+        </div>
+
+
+        <!-- Features Section -->
+        
+        <div class="features-section">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-comments"></i>
+                </div>
+                <h3 class="feature-title">Conversation Practice</h3>
+                <p class="feature-description">Engage in realistic German conversations with questions and answers categorized by difficulty level. Perfect for improving your speaking skills.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3 class="feature-title">Vocabulary Builder</h3>
+                <p class="feature-description">Expand your German vocabulary with categorized word lists, examples, and contextual usage to help you remember words more effectively.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-language"></i>
+                </div>
+                <h3 class="feature-title">Grammar Guide</h3>
+                <p class="feature-description">Master German grammar rules with clear explanations, examples, and practice exercises designed to make complex concepts easy to understand.</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>STAY CURIOUS | STAY SECURE | KEEP HACKING</p>
+            <p>© 2025 Cyber Security Study Tracker | Built for Learning & Growth</p>
+        </footer>
+    </div>
+
+    <script>
+        // Menu dropdown
+        const menuBtn = document.getElementById('menuBtn');
+        const dropdown = document.getElementById('dropdown');
+        
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Add hover effects to all buttons and interactive elements
+        document.querySelectorAll('button, .nav-links a, .dropdown a').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add focus states for accessibility
+        document.querySelectorAll('button, input, a').forEach(element => {
+            element.addEventListener('focus', function() {
+                this.style.outline = '2px solid rgba(255, 255, 255, 0.5)';
+                this.style.outlineOffset = '3px';
+                this.style.borderRadius = '25px';
+            });
+            
+            element.addEventListener('blur', function() {
+                this.style.outline = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

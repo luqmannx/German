@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sentenses</title>
+     <link rel="icon" href="/assets/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <button class="menu-btn" id="menuBtn">MENU</button>
+        </div>
+    </nav>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown" id="dropdown">
+           <a href="/index.html">Home</a>
+        <a href="/html/conversation.html">Conversations</a>
+        <a href="/html/vocaublary.html">Vocaublary</a>
+        <a href="/html/grammer.html">Grammer</a>
+     
+
+    </div>
+
+    <!-- German Content -->
+    <div class="container">
+        <div class="german-container">
+            <div class="content-box">
+                <h2>German Learning</h2>
+                <p>Practice your German skills with this collection of common phrases and sentences. Click on any German text to hear its pronunciation with a female German voice.</p>
+                
+                <div class="level-buttons">
+                    <button class="level-btn active" data-level="basic">Basic</button>
+                    <button class="level-btn" data-level="intermediate">Intermediate</button>
+                    <button class="level-btn" data-level="advanced">Advanced</button>
+                </div>
+            </div>
+
+            <!-- Basic Level Table -->
+            <div class="table-container active" id="basicTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>German Question</th>
+                            <th>German Answer</th>
+                        </tr>
+                    </thead>
+                    <tbody id="basicTableBody">
+                        <!-- Table rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Intermediate Level Table -->
+            <div class="table-container" id="intermediateTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>German Question</th>
+                            <th>German Answer</th>
+                        </tr>
+                    </thead>
+                    <tbody id="intermediateTableBody">
+                        <!-- Table rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Advanced Level Table -->
+            <div class="table-container" id="advancedTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>German Question</th>
+                            <th>German Answer</th>
+                        </tr>
+                    </thead>
+                    <tbody id="advancedTableBody">
+                        <!-- Advanced content will be added later -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <p>STAY CURIOUS | STAY SECURE | KEEP HACKING</p>
+            <p>© 2025 Cyber Security Study Tracker | Built for Learning & Growth</p>
+        </footer>
+    </div>
+
+    <script>
+        // Basic German sentences data - All 100 entries
+        const basicGermanData = [
+            { question: "Wie heißt du?", answer: "Mein Name ist Ali.", englishQuestion: "What is your name?", englishAnswer: "My name is Ali." },
+            { question: "Wie alt bist du?", answer: "Ich bin zwölf Jahre alt.", englishQuestion: "How old are you?", englishAnswer: "I am twelve years old." },
+            { question: "Wo wohnst du?", answer: "Ich wohne in Lahore.", englishQuestion: "Where do you live?", englishAnswer: "I live in Lahore." },
+            { question: "Liest du gerne?", answer: "Ja, ich lese gerne.", englishQuestion: "Do you like to read?", englishAnswer: "Yes, I like to read." },
+            { question: "Was ist deine Lieblingsfarbe?", answer: "Meine Lieblingsfarbe ist Blau.", englishQuestion: "What is your favorite color?", englishAnswer: "My favorite color is blue." },
+            { question: "Hast du ein Haustier?", answer: "Ja, ich habe eine Katze.", englishQuestion: "Do you have a pet?", englishAnswer: "Yes, I have a cat." },
+            { question: "Was ist das?", answer: "Das ist ein Buch.", englishQuestion: "What is this?", englishAnswer: "This is a book." },
+            { question: "Ist der Himmel blau?", answer: "Ja, der Himmel ist blau.", englishQuestion: "Is the sky blue?", englishAnswer: "Yes, the sky is blue." },
+            { question: "Spielst du gerne?", answer: "Ja, ich spiele gerne.", englishQuestion: "Do you like to play?", englishAnswer: "Yes, I like to play." },
+            { question: "Was ist dein Lieblingsessen?", answer: "Mein Lieblingsessen ist Pizza.", englishQuestion: "What is your favorite food?", englishAnswer: "My favorite food is pizza." },
+            { question: "Bist du glücklich?", answer: "Ja, ich bin glücklich.", englishQuestion: "Are you happy?", englishAnswer: "Yes, I am happy." },
+            { question: "Wie spät ist es?", answer: "Es ist drei Uhr.", englishQuestion: "What time is it?", englishAnswer: "It is three o'clock." },
+            { question: "Hast du eine Schwester?", answer: "Ja, ich habe eine Schwester.", englishQuestion: "Do you have a sister?", englishAnswer: "Yes, I have a sister." },
+            { question: "Ist das ein Stift?", answer: "Ja, das ist ein Stift.", englishQuestion: "Is this a pen?", englishAnswer: "Yes, this is a pen." },
+            { question: "Wo ist der Hund?", answer: "Der Hund ist im Garten.", englishQuestion: "Where is the dog?", englishAnswer: "The dog is in the garden." },
+            { question: "Singst du gerne?", answer: "Ja, ich singe gerne.", englishQuestion: "Do you like to sing?", englishAnswer: "Yes, I like to sing." },
+            { question: "Was ist dein Lieblingstier?", answer: "Mein Lieblingstier ist ein Löwe.", englishQuestion: "What is your favorite animal?", englishAnswer: "My favorite animal is a lion." },
+            { question: "Ist die Sonne heiß?", answer: "Ja, die Sonne ist heiß.", englishQuestion: "Is the sun hot?", englishAnswer: "Yes, the sun is hot." },
+            { question: "Hast du einen Bruder?", answer: "Nein, ich habe keinen Bruder.", englishQuestion: "Do you have a brother?", englishAnswer: "No, I don't have a brother." },
+            { question: "Was ist in der Tasche?", answer: "Ein Buch ist in der Tasche.", englishQuestion: "What is in the bag?", englishAnswer: "A book is in the bag." },
+            { question: "Kannst du schnell laufen?", answer: "Ja, ich kann schnell laufen.", englishQuestion: "Can you run fast?", englishAnswer: "Yes, I can run fast." },
+            { question: "Ist das Wasser kalt?", answer: "Ja, das Wasser ist kalt.", englishQuestion: "Is the water cold?", englishAnswer: "Yes, the water is cold." },
+            { question: "Was ist dein Lieblingsspiel?", answer: "Mein Lieblingsspiel ist Fußball.", englishQuestion: "What is your favorite game?", englishAnswer: "My favorite game is football." },
+            { question: "Malst du gerne?", answer: "Ja, ich male gerne.", englishQuestion: "Do you like to draw?", englishAnswer: "Yes, I like to draw." },
+            { question: "Wo ist deine Schule?", answer: "Meine Schule ist in der Nähe meines Hauses.", englishQuestion: "Where is your school?", englishAnswer: "My school is near my house." },
+            { question: "Ist das ein Stuhl?", answer: "Ja, das ist ein Stuhl.", englishQuestion: "Is this a chair?", englishAnswer: "Yes, this is a chair." },
+            { question: "Hast du einen Bleistift?", answer: "Ja, ich habe einen Bleistift.", englishQuestion: "Do you have a pencil?", englishAnswer: "Yes, I have a pencil." },
+            { question: "Welcher Tag ist heute?", answer: "Heute ist Montag.", englishQuestion: "What is the day today?", englishAnswer: "Today is Monday." },
+            { question: "Kannst du schwimmen?", answer: "Ja, ich kann schwimmen.", englishQuestion: "Can you swim?", englishAnswer: "Yes, I can swim." },
+            { question: "Ist der Baum hoch?", answer: "Ja, der Baum ist hoch.", englishQuestion: "Is the tree tall?", englishAnswer: "Yes, the tree is tall." },
+            { question: "Was ist deine Lieblingsfrucht?", answer: "Meine Lieblingsfrucht ist ein Apfel.", englishQuestion: "What is your favorite fruit?", englishAnswer: "My favorite fruit is an apple." },
+            { question: "Tanzt du gerne?", answer: "Ja, ich tanze gerne.", englishQuestion: "Do you like to dance?", englishAnswer: "Yes, I like to dance." },
+            { question: "Wo ist das Auto?", answer: "Das Auto ist in der Garage.", englishQuestion: "Where is the car?", englishAnswer: "The car is in the garage." },
+            { question: "Ist das ein Tisch?", answer: "Ja, das ist ein Tisch.", englishQuestion: "Is this a table?", englishAnswer: "Yes, this is a table." },
+            { question: "Hast du eine Tasche?", answer: "Ja, ich habe eine Tasche.", englishQuestion: "Do you have a bag?", englishAnswer: "Yes, I have a bag." },
+            { question: "Was ist in der Schachtel?", answer: "Ein Spielzeug ist in der Schachtel.", englishQuestion: "What is in the box?", englishAnswer: "A toy is in the box." },
+            { question: "Kannst du hoch springen?", answer: "Ja, ich kann hoch springen.", englishQuestion: "Can you jump high?", englishAnswer: "Yes, I can jump high." },
+            { question: "Ist der Mond hell?", answer: "Ja, der Mond ist hell.", englishQuestion: "Is the moon bright?", englishAnswer: "Yes, the moon is bright." },
+            { question: "Was ist dein Lieblingsgetränk?", answer: "Mein Lieblingsgetränk ist Saft.", englishQuestion: "What is your favorite drink?", englishAnswer: "My favorite drink is juice." },
+            { question: "Schreibst du gerne?", answer: "Ja, ich schreibe gerne.", englishQuestion: "Do you like to write?", englishAnswer: "Yes, I like to write." },
+            { question: "Wo ist die Katze?", answer: "Die Katze ist auf dem Stuhl.", englishQuestion: "Where is the cat?", englishAnswer: "The cat is on the chair." },
+            { question: "Ist das ein Ball?", answer: "Ja, das ist ein Ball.", englishQuestion: "Is this a ball?", englishAnswer: "Yes, this is a ball." },
+            { question: "Hast du einen Freund?", answer: "Ja, ich habe einen Freund.", englishQuestion: "Do you have a friend?", englishAnswer: "Yes, I have a friend." },
+            { question: "Wie ist das Wetter heute?", answer: "Das Wetter ist sonnig.", englishQuestion: "What is the weather today?", englishAnswer: "The weather is sunny." },
+            { question: "Kannst du ein Lied singen?", answer: "Ja, ich kann ein Lied singen.", englishQuestion: "Can you sing a song?", englishAnswer: "Yes, I can sing a song." },
+            { question: "Ist das Haus groß?", answer: "Ja, das Haus ist groß.", englishQuestion: "Is the house big?", englishAnswer: "Yes, the house is big." },
+            { question: "Was ist dein Lieblingsspielzeug?", answer: "Mein Lieblingsspielzeug ist ein Auto.", englishQuestion: "What is your favorite toy?", englishAnswer: "My favorite toy is a car." },
+            { question: "Isst du gerne Eis?", answer: "Ja, ich esse gerne Eis.", englishQuestion: "Do you like to eat ice cream?", englishAnswer: "Yes, I like to eat ice cream." },
+            { question: "Wo ist das Buch?", answer: "Das Buch ist auf dem Tisch.", englishQuestion: "Where is the book?", englishAnswer: "The book is on the table." },
+            { question: "Ist das ein Hund?", answer: "Ja, das ist ein Hund.", englishQuestion: "Is this a dog?", englishAnswer: "Yes, this is a dog." },
+            { question: "Hast du ein Telefon?", answer: "Ja, ich habe ein Telefon.", englishQuestion: "Do you have a phone?", englishAnswer: "Yes, I have a phone." },
+            { question: "Was ist im Zimmer?", answer: "Ein Bett ist im Zimmer.", englishQuestion: "What is in the room?", englishAnswer: "A bed is in the room." },
+            { question: "Kannst du Fahrrad fahren?", answer: "Ja, ich kann Fahrrad fahren.", englishQuestion: "Can you ride a bike?", englishAnswer: "Yes, I can ride a bike." },
+            { question: "Ist die Blume rot?", answer: "Ja, die Blume ist rot.", englishQuestion: "Is the flower red?", englishAnswer: "Yes, the flower is red." },
+            { question: "Was ist dein Lieblingsfach?", answer: "Mein Lieblingsfach ist Mathematik.", englishQuestion: "What is your favorite subject?", englishAnswer: "My favorite subject is math." },
+            { question: "Siehst du gerne fern?", answer: "Ja, ich sehe gerne fern.", englishQuestion: "Do you like to watch TV?", englishAnswer: "Yes, I like to watch TV." },
+            { question: "Wo ist der Vogel?", answer: "Der Vogel ist im Baum.", englishQuestion: "Where is the bird?", englishAnswer: "The bird is in the tree." },
+            { question: "Ist das ein Hut?", answer: "Ja, das ist ein Hut.", englishQuestion: "Is this a hat?", englishAnswer: "Yes, this is a hat." },
+            { question: "Hast du eine Uhr?", answer: "Ja, ich habe eine Uhr.", englishQuestion: "Do you have a watch?", englishAnswer: "Yes, I have a watch." },
+            { question: "Wie spät ist es jetzt?", answer: "Es ist jetzt fünf Uhr.", englishQuestion: "What is the time now?", englishAnswer: "It is five o'clock now." },
+            { question: "Kannst du ein Bild malen?", answer: "Ja, ich kann ein Bild malen.", englishQuestion: "Can you draw a picture?", englishAnswer: "Yes, I can draw a picture." },
+            { question: "Ist das Auto schnell?", answer: "Ja, das Auto ist schnell.", englishQuestion: "Is the car fast?", englishAnswer: "Yes, the car is fast." },
+            { question: "Was ist dein Lieblingssport?", answer: "Mein Lieblingssport ist Cricket.", englishQuestion: "What is your favorite sport?", englishAnswer: "My favorite sport is cricket." },
+            { question: "Läufst du gerne?", answer: "Ja, ich laufe gerne.", englishQuestion: "Do you like to run?", englishAnswer: "Yes, I like to run." },
+            { question: "Wo ist der Bleistift?", answer: "Der Bleistift ist auf dem Schreibtisch.", englishQuestion: "Where is the pencil?", englishAnswer: "The pencil is on the desk." },
+            { question: "Ist das ein Baum?", answer: "Ja, das ist ein Baum.", englishQuestion: "Is this a tree?", englishAnswer: "Yes, this is a tree." },
+            { question: "Hast du ein Spielzeug?", answer: "Ja, ich habe ein Spielzeug.", englishQuestion: "Do you have a toy?", englishAnswer: "Yes, I have a toy." },
+            { question: "Was ist am Himmel?", answer: "Eine Wolke ist am Himmel.", englishQuestion: "What is in the sky?", englishAnswer: "A cloud is in the sky." },
+            { question: "Kannst du ein Buch lesen?", answer: "Ja, ich kann ein Buch lesen.", englishQuestion: "Can you read a book?", englishAnswer: "Yes, I can read a book." },
+            { question: "Ist der Apfel süß?", answer: "Ja, der Apfel ist süß.", englishQuestion: "Is the apple sweet?", englishAnswer: "Yes, the apple is sweet." },
+            { question: "Was ist dein Lieblingstag?", answer: "Mein Lieblingstag ist Freitag.", englishQuestion: "What is your favorite day?", englishAnswer: "My favorite day is Friday." },
+            { question: "Schläfst du gerne?", answer: "Ja, ich schlafe gerne.", englishQuestion: "Do you like to sleep?", englishAnswer: "Yes, I like to sleep." },
+            { question: "Wo ist der Ball?", answer: "Der Ball ist unter dem Tisch.", englishQuestion: "Where is the ball?", englishAnswer: "The ball is under the table." },
+            { question: "Ist das eine Blume?", answer: "Ja, das ist eine Blume.", englishQuestion: "Is this a flower?", englishAnswer: "Yes, this is a flower." },
+            { question: "Hast du einen Computer?", answer: "Ja, ich habe einen Computer.", englishQuestion: "Do you have a computer?", englishAnswer: "Yes, I have a computer." },
+            { question: "Was ist in der Küche?", answer: "Ein Tisch ist in der Küche.", englishQuestion: "What is in the kitchen?", englishAnswer: "A table is in the kitchen." },
+            { question: "Kannst du Fußball spielen?", answer: "Ja, ich kann Fußball spielen.", englishQuestion: "Can you play football?", englishAnswer: "Yes, I can play football." },
+            { question: "Ist der Hund groß?", answer: "Ja, der Hund ist groß.", englishQuestion: "Is the dog big?", englishAnswer: "Yes, the dog is big." },
+            { question: "Was ist dein Lieblingsbuch?", answer: "Mein Lieblingsbuch ist ein Geschichtenbuch.", englishQuestion: "What is your favorite book?", englishAnswer: "My favorite book is a storybook." },
+            { question: "Schwimmst du gerne?", answer: "Ja, ich schwimme gerne.", englishQuestion: "Do you like to swim?", englishAnswer: "Yes, I like to swim." },
+            { question: "Wo ist der Stuhl?", answer: "Der Stuhl ist im Zimmer.", englishQuestion: "Where is the chair?", englishAnswer: "The chair is in the room." },
+            { question: "Ist das ein Telefon?", answer: "Ja, das ist ein Telefon.", englishQuestion: "Is this a phone?", englishAnswer: "Yes, this is a phone." },
+            { question: "Hast du einen Stift?", answer: "Ja, ich habe einen Stift.", englishQuestion: "Do you have a pen?", englishAnswer: "Yes, I have a pen." },
+            { question: "Welche Farbe hat der Himmel?", answer: "Der Himmel ist blau.", englishQuestion: "What is the color of the sky?", englishAnswer: "The sky is blue." },
+            { question: "Kannst du deinen Namen schreiben?", answer: "Ja, ich kann meinen Namen schreiben.", englishQuestion: "Can you write your name?", englishAnswer: "Yes, I can write my name." },
+            { question: "Ist das Buch schwer?", answer: "Nein, das Buch ist nicht schwer.", englishQuestion: "Is the book heavy?", englishAnswer: "No, the book is not heavy." },
+            { question: "Was ist dein Lieblingsort?", answer: "Mein Lieblingsort ist der Park.", englishQuestion: "What is your favorite place?", englishAnswer: "My favorite place is the park." },
+            { question: "Isst du gerne Obst?", answer: "Ja, ich esse gerne Obst.", englishQuestion: "Do you like to eat fruit?", englishAnswer: "Yes, I like to eat fruit." },
+            { question: "Wo ist das Haus?", answer: "Das Haus ist in der Nähe der Schule.", englishQuestion: "Where is the house?", englishAnswer: "The house is near the school." },
+            { question: "Ist das eine Katze?", answer: "Ja, das ist eine Katze.", englishQuestion: "Is this a cat?", englishAnswer: "Yes, this is a cat." },
+            { question: "Hast du ein Fahrrad?", answer: "Ja, ich habe ein Fahrrad.", englishQuestion: "Do you have a bicycle?", englishAnswer: "Yes, I have a bicycle." },
+            { question: "Was ist im Garten?", answer: "Ein Baum ist im Garten.", englishQuestion: "What is in the garden?", englishAnswer: "A tree is in the garden." },
+            { question: "Kannst du auf einen Baum klettern?", answer: "Ja, ich kann auf einen Baum klettern.", englishQuestion: "Can you climb a tree?", englishAnswer: "Yes, I can climb a tree." },
+            { question: "Ist das Zimmer sauber?", answer: "Ja, das Zimmer ist sauber.", englishQuestion: "Is the room clean?", englishAnswer: "Yes, the room is clean." },
+            { question: "Was ist deine Lieblingsfarbe?", answer: "Meine Lieblingsfarbe ist Grün.", englishQuestion: "What is your favorite color?", englishAnswer: "My favorite color is green." },
+            { question: "Spielst du gerne Spiele?", answer: "Ja, ich spiele gerne Spiele.", englishQuestion: "Do you like to play games?", englishAnswer: "Yes, I like to play games." },
+            { question: "Wo ist das Spielzeug?", answer: "Das Spielzeug ist in der Schachtel.", englishQuestion: "Where is the toy?", englishAnswer: "The toy is in the box." },
+            { question: "Ist das ein Vogel?", answer: "Ja, das ist ein Vogel.", englishQuestion: "Is this a bird?", englishAnswer: "Yes, this is a bird." },
+            { question: "Hast du eine Uhr?", answer: "Ja, ich habe eine Uhr.", englishQuestion: "Do you have a clock?", englishAnswer: "Yes, I have a clock." },
+            { question: "Wie heißt deine Schule?", answer: "Meine Schule heißt Nust.", englishQuestion: "What is the name of your school?", englishAnswer: "My school's name is NUST." }
+        ];
+
+        // Intermediate German sentences data - From german2.txt
+        const intermediateGermanData = [
+            { question: "Was machst du jeden Morgen?", answer: "Ich putze mir jeden Morgen die Zähne.", englishQuestion: "What do you do every morning?", englishAnswer: "I brush my teeth every morning." },
+            { question: "Spielt sie Fußball?", answer: "Ja, sie spielt Fußball.", englishQuestion: "Does she play football?", englishAnswer: "Yes, she plays football." },
+            { question: "Wo wohnt er?", answer: "Er wohnt in Islamabad.", englishQuestion: "Where does he live?", englishAnswer: "He lives in Islamabad." },
+            { question: "Wann beginnt die Schule?", answer: "Die Schule beginnt um 8 Uhr.", englishQuestion: "What time does school start?", englishAnswer: "School starts at 8 AM." },
+            { question: "Magst du Mathematik?", answer: "Ja, ich mag Mathematik.", englishQuestion: "Do you like mathematics?", englishAnswer: "Yes, I like mathematics." },
+            { question: "Wie funktioniert der Computer?", answer: "Der Computer funktioniert mit Strom.", englishQuestion: "How does the computer work?", englishAnswer: "The computer works with electricity." },
+            { question: "Was macht ein Programmierer?", answer: "Ein Programmierer schreibt Code.", englishQuestion: "What does a programmer do?", englishAnswer: "A programmer writes code." },
+            { question: "Regnet es im Sommer?", answer: "Nein, es regnet im Sommer nicht.", englishQuestion: "Does it rain in summer?", englishAnswer: "No, it does not rain in summer." },
+            { question: "Wer unterrichtet Englisch?", answer: "Fräulein Fatima unterrichtet Englisch.", englishQuestion: "Who teaches English?", englishAnswer: "Miss Fatima teaches English." },
+            { question: "Warum lernen wir Physik?", answer: "Wir lernen Physik, um die Natur zu verstehen.", englishQuestion: "Why do we study physics?", englishAnswer: "We study physics to understand nature." },
+            { question: "Was machst du jetzt?", answer: "Ich lerne jetzt für NET.", englishQuestion: "What are you doing now?", englishAnswer: "I am studying for NET." },
+            { question: "Liest er ein Buch?", answer: "Ja, er liest ein Buch.", englishQuestion: "Is he reading a book?", englishAnswer: "Yes, he is reading a book." },
+            { question: "Warum rennen sie?", answer: "Sie rennen, um den Bus zu erwischen.", englishQuestion: "Why are they running?", englishAnswer: "They are running to catch the bus." },
+            { question: "Was schreibt der Lehrer?", answer: "Der Lehrer schreibt an die Tafel.", englishQuestion: "What is the teacher writing?", englishAnswer: "The teacher is writing on the board." },
+            { question: "Benutzt du einen Computer?", answer: "Ja, ich benutze einen Computer.", englishQuestion: "Are you using a computer?", englishAnswer: "Yes, I am using a computer." },
+            { question: "Regnet es draußen?", answer: "Nein, es regnet nicht.", englishQuestion: "Is it raining outside?", englishAnswer: "No, it is not raining." },
+            { question: "Was lernen wir heute?", answer: "Wir lernen heute englische Grammatik.", englishQuestion: "What are we learning today?", englishAnswer: "We are learning English grammar." },
+            { question: "Warum weint sie?", answer: "Sie weint, weil sie traurig ist.", englishQuestion: "Why is she crying?", englishAnswer: "She is crying because she is sad." },
+            { question: "Hören die Schüler zu?", answer: "Ja, die Schüler hören zu.", englishQuestion: "Are the students listening?", englishAnswer: "Yes, the students are listening." },
+            { question: "Was passiert jetzt?", answer: "Ein Computerunterricht passiert jetzt.", englishQuestion: "What is happening now?", englishAnswer: "A computer class is happening now." },
+            { question: "Was hast du gestern gemacht?", answer: "Ich habe gestern Mathematik gelernt.", englishQuestion: "What did you do yesterday?", englishAnswer: "I studied mathematics yesterday." },
+            { question: "Hast du das Spiel gewonnen?", answer: "Ja, ich habe das Spiel gewonnen.", englishQuestion: "Did you win the game?", englishAnswer: "Yes, I won the game." },
+            { question: "Wo sind sie hingegangen?", answer: "Sie sind zur NUST Universität gegangen.", englishQuestion: "Where did they go?", englishAnswer: "They went to NUST University." },
+            { question: "Was ist in der Schule passiert?", answer: "Wir hatten einen Computer-Test.", englishQuestion: "What happened at school?", englishAnswer: "We had a computer test." },
+            { question: "Hat es gestern geregnet?", answer: "Nein, es hat nicht geregnet.", englishQuestion: "Did it rain yesterday?", englishAnswer: "No, it did not rain." },
+            { question: "Wer hat dir geholfen?", answer: "Mein Freund hat mir geholfen.", englishQuestion: "Who helped you?", englishAnswer: "My friend helped me." },
+            { question: "Wann hat der Unterricht begonnen?", answer: "Der Unterricht hat um 9 Uhr begonnen.", englishQuestion: "When did the class start?", englishAnswer: "The class started at 9 AM." },
+            { question: "Was hast du gegessen?", answer: "Ich habe Reis und Huhn gegessen.", englishQuestion: "What did you eat?", englishAnswer: "I ate rice and chicken." },
+            { question: "Hat sie die Prüfung bestanden?", answer: "Ja, sie hat die Prüfung bestanden.", englishQuestion: "Did she pass the exam?", englishAnswer: "Yes, she passed the exam." },
+            { question: "Warum warst du zu spät?", answer: "Ich war zu spät wegen Verkehr.", englishQuestion: "Why were you late?", englishAnswer: "I was late because of traffic." },
+            { question: "Was wirst du morgen machen?", answer: "Ich werde morgen Physik lernen.", englishQuestion: "What will you do tomorrow?", englishAnswer: "I will study physics tomorrow." },
+            { question: "Wird es morgen regnen?", answer: "Ja, es wird regnen.", englishQuestion: "Will it rain tomorrow?", englishAnswer: "Yes, it will rain." },
+            { question: "Wo wirst du hingehen?", answer: "Ich werde in die Bibliothek gehen.", englishQuestion: "Where will you go?", englishAnswer: "I will go to the library." },
+            { question: "Wirst du NET bestehen?", answer: "Ja, ich werde NET bestehen.", englishQuestion: "Will you pass NET?", englishAnswer: "Yes, I will pass NET." },
+            { question: "Was wird als nächstes passieren?", answer: "Wir werden eine Prüfung haben.", englishQuestion: "What will happen next?", englishAnswer: "We will have a test." },
+            { question: "Wird er BS CS machen?", answer: "Ja, er wird BS CS machen.", englishQuestion: "Will he join BS CS?", englishAnswer: "Yes, he will join BS CS." },
+            { question: "Wann wird die Prüfung beginnen?", answer: "Die Prüfung wird um 10 Uhr beginnen.", englishQuestion: "When will the exam start?", englishAnswer: "The exam will start at 10 AM." },
+            { question: "Wirst du mir helfen?", answer: "Ja, ich werde dir helfen.", englishQuestion: "Will you help me?", englishAnswer: "Yes, I will help you." },
+            { question: "Was wirst du kaufen?", answer: "Ich werde einen neuen Computer kaufen.", englishQuestion: "What will you buy?", englishAnswer: "I will buy a new computer." },
+            { question: "Wird NUST mich annehmen?", answer: "Ja, NUST wird mich annehmen.", englishQuestion: "Will NUST accept me?", englishAnswer: "Yes, NUST will accept me." },
+            { question: "Was ist ein Computer?", answer: "Ein Computer ist eine elektronische Maschine.", englishQuestion: "What is a computer?", englishAnswer: "A computer is an electronic machine." },
+            { question: "Was ist RAM?", answer: "RAM ist Speicher im Computer.", englishQuestion: "What is RAM?", englishAnswer: "RAM is memory in computer." },
+            { question: "Was macht die CPU?", answer: "Die CPU verarbeitet Daten.", englishQuestion: "What does CPU do?", englishAnswer: "CPU processes data." },
+            { question: "Was ist Internet?", answer: "Internet ist ein Netzwerk von Computern.", englishQuestion: "What is internet?", englishAnswer: "Internet is a network of computers." },
+            { question: "Was ist eine Tastatur?", answer: "Tastatur ist zum Tippen.", englishQuestion: "What is a keyboard?", englishAnswer: "Keyboard is for typing." },
+            { question: "Was ist eine Maus?", answer: "Maus ist zum Klicken.", englishQuestion: "What is a mouse?", englishAnswer: "Mouse is for clicking." },
+            { question: "Was ist Programmieren?", answer: "Programmieren ist Code schreiben.", englishQuestion: "What is programming?", englishAnswer: "Programming is writing code." },
+            { question: "Welche Sprache benutzt du?", answer: "Ich benutze Python-Sprache.", englishQuestion: "What language do you use?", englishAnswer: "I use Python language." },
+            { question: "Was ist ein Algorithmus?", answer: "Algorithmus ist schrittweise Lösung.", englishQuestion: "What is an algorithm?", englishAnswer: "Algorithm is step-by-step solution." },
+            { question: "Was ist ein Virus?", answer: "Virus ist schädliche Software.", englishQuestion: "What is a virus?", englishAnswer: "Virus is harmful software." },
+            { question: "Wo ist das Buch?", answer: "Das Buch ist auf dem Tisch.", englishQuestion: "Where is the book?", englishAnswer: "The book is on the table." },
+            { question: "Wann lernst du?", answer: "Ich lerne am Abend.", englishQuestion: "When do you study?", englishAnswer: "I study in the evening." },
+            { question: "Ist der Computer im Zimmer?", answer: "Ja, er ist im Zimmer.", englishQuestion: "Is the computer in the room?", englishAnswer: "Yes, it is in the room." },
+            { question: "Wo sitzt du?", answer: "Ich sitze am Schreibtisch.", englishQuestion: "Where do you sit?", englishAnswer: "I sit at the desk." },
+            { question: "Was ist unter dem Stuhl?", answer: "Eine Tasche ist unter dem Stuhl.", englishQuestion: "What is under the chair?", englishAnswer: "A bag is under the chair." },
+            { question: "Wann ist die NET-Prüfung?", answer: "Die NET-Prüfung ist im März.", englishQuestion: "When is the NET exam?", englishAnswer: "The NET exam is in March." },
+            { question: "Ist der Stift in der Nähe des Buches?", answer: "Ja, der Stift ist in der Nähe des Buches.", englishQuestion: "Is the pen near the book?", englishAnswer: "Yes, the pen is near the book." },
+            { question: "Wo spielst du?", answer: "Ich spiele im Park.", englishQuestion: "Where do you play?", englishAnswer: "I play in the park." },
+            { question: "Was ist zwischen den Büchern?", answer: "Ein Notizbuch ist zwischen den Büchern.", englishQuestion: "What is between the books?", englishAnswer: "A notebook is between the books." },
+            { question: "Wann gehst du zur NUST?", answer: "Ich gehe am Montag zur NUST.", englishQuestion: "When do you go to NUST?", englishAnswer: "I go to NUST on Monday." },
+            { question: "Ist das ein Computer?", answer: "Ja, das ist ein Computer.", englishQuestion: "Is this a computer?", englishAnswer: "Yes, this is a computer." },
+            { question: "Hast du einen Apfel?", answer: "Ja, ich habe einen Apfel.", englishQuestion: "Do you have an apple?", englishAnswer: "Yes, I have an apple." },
+            { question: "Was ist die Hauptstadt Pakistans?", answer: "Die Hauptstadt ist Islamabad.", englishQuestion: "What is the capital of Pakistan?", englishAnswer: "The capital is Islamabad." },
+            { question: "Ist das eine Prüfung?", answer: "Ja, das ist eine Prüfung.", englishQuestion: "Is this an exam?", englishAnswer: "Yes, this is an exam." },
+            { question: "Wie heißt deine Schule?", answer: "Der Name ist NUST.", englishQuestion: "What is the name of your school?", englishAnswer: "The name is NUST." },
+            { question: "Möchtest du einen Bleistift?", answer: "Ja, ich möchte einen Bleistift.", englishQuestion: "Do you want a pencil?", englishAnswer: "Yes, I want a pencil." },
+            { question: "Ist der Himmel blau?", answer: "Ja, der Himmel ist blau.", englishQuestion: "Is the sky blue?", englishAnswer: "Yes, the sky is blue." },
+            { question: "Hast du einen Regenschirm?", answer: "Nein, ich habe keinen Regenschirm.", englishQuestion: "Do you have an umbrella?", englishAnswer: "No, I don't have an umbrella." },
+            { question: "Was ist eine Tastatur?", answer: "Eine Tastatur ist zum Tippen.", englishQuestion: "What is a keyboard?", englishAnswer: "A keyboard is for typing." },
+            { question: "Ist die Sonne hell?", answer: "Ja, die Sonne ist hell.", englishQuestion: "Is the sun bright?", englishAnswer: "Yes, the sun is bright." },
+            { question: "Was ist Schwerkraft?", answer: "Schwerkraft zieht Objekte nach unten.", englishQuestion: "What is gravity?", englishAnswer: "Gravity pulls objects down." },
+            { question: "Was ist ein Stromkreis?", answer: "Ein Stromkreis ist ein Weg für Strom.", englishQuestion: "What is a circuit?", englishAnswer: "A circuit is a path for electricity." },
+            { question: "Was speichert eine Datenbank?", answer: "Eine Datenbank speichert Informationen.", englishQuestion: "What does a database store?", englishAnswer: "A database stores information." },
+            { question: "Was ist Energie?", answer: "Energie ist die Fähigkeit, Arbeit zu leisten.", englishQuestion: "What is energy?", englishAnswer: "Energy is the ability to do work." },
+            { question: "Was ist Software?", answer: "Software ist Anweisungen für Computer.", englishQuestion: "What is software?", englishAnswer: "Software is instructions for computers." },
+            { question: "Was ist ein Netzwerk?", answer: "Ein Netzwerk verbindet Computer.", englishQuestion: "What is a network?", englishAnswer: "A network connects computers." },
+            { question: "Was bedeutet Debuggen?", answer: "Debuggen bedeutet, Fehler im Code zu beheben.", englishQuestion: "What does debug mean?", englishAnswer: "Debug means fixing code errors." },
+            { question: "Was ist Geschwindigkeit?", answer: "Geschwindigkeit ist Schnelligkeit mit Richtung.", englishQuestion: "What is velocity?", englishAnswer: "Velocity is speed with direction." },
+            { question: "Was ist eine Variable beim Programmieren?", answer: "Eine Variable speichert Daten beim Programmieren.", englishQuestion: "What is a variable in coding?", englishAnswer: "A variable stores data in coding." },
+            { question: "Was ist ein Server?", answer: "Ein Server verwaltet Netzwerkdaten.", englishQuestion: "What is a server?", englishAnswer: "A server manages network data." },
+            { question: "Warum benutzen wir Computer?", answer: "Wir benutzen Computer für Arbeit und Studium.", englishQuestion: "Why do we use computers?", englishAnswer: "We use computers for work and study." },
+            { question: "Was passiert, wenn du NET nicht bestehst?", answer: "Du kannst es nächstes Mal wieder versuchen.", englishQuestion: "What happens if you fail NET?", englishAnswer: "You can try again next time." },
+            { question: "Wer studiert an der NUST?", answer: "Studenten studieren an der NUST.", englishQuestion: "Who studies at NUST?", englishAnswer: "Students study at NUST." },
+            { question: "Wie kannst du dich auf NET vorbereiten?", answer: "Ich kann mich durch tägliches Lernen vorbereiten.", englishQuestion: "How can you prepare for NET?", englishAnswer: "I can prepare by studying daily." },
+            { question: "Was ist wichtig für BS CS?", answer: "Mathematik und Englisch sind wichtig.", englishQuestion: "What is important for BS CS?", englishAnswer: "Math and English are important." },
+            { question: "Warum wird Englisch in NET getestet?", answer: "Englisch wird für Kommunikation getestet.", englishQuestion: "Why is English tested in NET?", englishAnswer: "English is tested for communication." },
+            { question: "Was solltest du vor der Prüfung tun?", answer: "Ich sollte vor der Prüfung gut schlafen.", englishQuestion: "What should you do before the exam?", englishAnswer: "I should sleep well before the exam." },
+            { question: "Kann harte Arbeit dir helfen, zu bestehen?", answer: "Ja, harte Arbeit kann mir helfen, zu bestehen.", englishQuestion: "Can hard work help you pass?", englishAnswer: "Yes, hard work can help me pass." },
+            { question: "Was ist das Ziel von NET?", answer: "Das Ziel ist, gute Studenten auszuwählen.", englishQuestion: "What is the goal of NET?", englishAnswer: "The goal is to select good students." },
+            { question: "Wirst du der NUST beitreten?", answer: "Ja, ich werde der NUST beitreten!", englishQuestion: "Will you join NUST?", englishAnswer: "Yes, I will join NUST!" }
+        ];
+
+        const advancedGermanData = [
+    { question: "Magst du lernen?", answer: "Ja, ich mag lernen.", englishQuestion: "Do you like to study?", englishAnswer: "Yes, I like to study." },
+    { question: "Ist der Computer an?", answer: "Ja, der Computer ist an.", englishQuestion: "Is the computer on?", englishAnswer: "Yes, the computer is on." },
+    { question: "Geht sie zur Schule?", answer: "Ja, sie geht zur Schule.", englishQuestion: "Does she go to school?", englishAnswer: "Yes, she goes to school." },
+    { question: "Ist das Buch offen?", answer: "Ja, das Buch ist offen.", englishQuestion: "Is the book open?", englishAnswer: "Yes, the book is open." },
+    { question: "Wachst du früh auf?", answer: "Ja, ich wache früh auf.", englishQuestion: "Do you wake up early?", englishAnswer: "Yes, I wake up early." },
+    { question: "Ist das Zimmer sauber?", answer: "Ja, das Zimmer ist sauber.", englishQuestion: "Is the room clean?", englishAnswer: "Yes, the room is clean." },
+    { question: "Schreibt er Code?", answer: "Ja, er schreibt Code.", englishQuestion: "Does he write code?", englishAnswer: "Yes, he writes code." },
+    { question: "Ist der Tag sonnig?", answer: "Ja, der Tag ist sonnig.", englishQuestion: "Is the day sunny?", englishAnswer: "Yes, the day is sunny." },
+    { question: "Liest du Bücher?", answer: "Ja, ich lese Bücher.", englishQuestion: "Do you read books?", englishAnswer: "Yes, I read books." },
+    { question: "Ist die Prüfung einfach?", answer: "Ja, die Prüfung ist einfach.", englishQuestion: "Is the test easy?", englishAnswer: "Yes, the test is easy." },
+    { question: "Lernst du jetzt?", answer: "Ja, ich lerne jetzt.", englishQuestion: "Are you studying now?", englishAnswer: "Yes, I am studying now." },
+    { question: "Schreibt er ein Programm?", answer: "Ja, er schreibt ein Programm.", englishQuestion: "Is he writing a program?", englishAnswer: "Yes, he is writing a program." },
+    { question: "Spielen sie draußen?", answer: "Ja, sie spielen draußen.", englishQuestion: "Are they playing outside?", englishAnswer: "Yes, they are playing outside." },
+    { question: "Liest sie ein Buch?", answer: "Ja, sie liest ein Buch.", englishQuestion: "Is she reading a book?", englishAnswer: "Yes, she is reading a book." },
+    { question: "Benutzt du einen Computer?", answer: "Ja, ich benutze einen Computer.", englishQuestion: "Are you using a computer?", englishAnswer: "Yes, I am using a computer." },
+    { question: "Regnet es jetzt?", answer: "Ja, es regnet jetzt.", englishQuestion: "Is it raining now?", englishAnswer: "Yes, it is raining now." },
+    { question: "Lernen wir Englisch?", answer: "Ja, wir lernen Englisch.", englishQuestion: "Are we learning English?", englishAnswer: "Yes, we are learning English." },
+    { question: "Erklärt der Lehrer?", answer: "Ja, der Lehrer erklärt.", englishQuestion: "Is the teacher explaining?", englishAnswer: "Yes, the teacher is explaining." },
+    { question: "Hören die Schüler zu?", answer: "Ja, die Schüler hören zu.", englishQuestion: "Are the students listening?", englishAnswer: "Yes, the students are listening." },
+    { question: "Findet der Unterricht jetzt statt?", answer: "Ja, der Unterricht findet jetzt statt.", englishQuestion: "Is the class happening now?", englishAnswer: "Yes, the class is happening now." },
+    { question: "Hast du gestern gelernt?", answer: "Ja, ich habe gestern gelernt.", englishQuestion: "Did you study yesterday?", englishAnswer: "Yes, I studied yesterday." },
+    { question: "Hat er die Prüfung bestanden?", answer: "Ja, er hat die Prüfung bestanden.", englishQuestion: "Did he pass the test?", englishAnswer: "Yes, he passed the test." },
+    { question: "Ist sie zur NUST gegangen?", answer: "Ja, sie ist zur NUST gegangen.", englishQuestion: "Did she go to NUST?", englishAnswer: "Yes, she went to NUST." },
+    { question: "Hast du Code geschrieben?", answer: "Ja, ich habe Code geschrieben.", englishQuestion: "Did you write code?", englishAnswer: "Yes, I wrote code." },
+    { question: "Hat es gestern geregnet?", answer: "Ja, es hat gestern geregnet.", englishQuestion: "Did it rain yesterday?", englishAnswer: "Yes, it rained yesterday." },
+    { question: "Haben sie das Projekt beendet?", answer: "Ja, sie haben das Projekt beendet.", englishQuestion: "Did they finish the project?", englishAnswer: "Yes, they finished the project." },
+    { question: "Hast du den Lehrer gesehen?", answer: "Ja, ich habe den Lehrer gesehen.", englishQuestion: "Did you see the teacher?", englishAnswer: "Yes, I saw the teacher." },
+    { question: "Hat sie Physik gelernt?", answer: "Ja, sie hat Physik gelernt.", englishQuestion: "Did she learn physics?", englishAnswer: "Yes, she learned physics." },
+    { question: "Hast du Mittag gegessen?", answer: "Ja, ich habe Mittag gegessen.", englishQuestion: "Did you eat lunch?", englishAnswer: "Yes, I ate lunch." },
+    { question: "Hat er dir geholfen?", answer: "Ja, er hat mir geholfen.", englishQuestion: "Did he help you?", englishAnswer: "Yes, he helped me." },
+    { question: "Wirst du morgen lernen?", answer: "Ja, ich werde morgen lernen.", englishQuestion: "Will you study tomorrow?", englishAnswer: "Yes, I will study tomorrow." },
+    { question: "Wird sie NET bestehen?", answer: "Ja, sie wird NET bestehen.", englishQuestion: "Will she pass NET?", englishAnswer: "Yes, she will pass NET." },
+    { question: "Wirst du zur NUST gehen?", answer: "Ja, ich werde zur NUST gehen.", englishQuestion: "Will you go to NUST?", englishAnswer: "Yes, I will go to NUST." },
+    { question: "Wird es morgen regnen?", answer: "Ja, es wird morgen regnen.", englishQuestion: "Will it rain tomorrow?", englishAnswer: "Yes, it will rain tomorrow." },
+    { question: "Wirst du Code schreiben?", answer: "Ja, ich werde Code schreiben.", englishQuestion: "Will you write code?", englishAnswer: "Yes, I will write code." },
+    { question: "Werden sie das Projekt beenden?", answer: "Ja, sie werden das Projekt beenden.", englishQuestion: "Will they finish the project?", englishAnswer: "Yes, they will finish the project." },
+    { question: "Wirst du Physik lernen?", answer: "Ja, ich werde Physik lernen.", englishQuestion: "Will you learn physics?", englishAnswer: "Yes, I will learn physics." },
+    { question: "Wird er dir helfen?", answer: "Ja, er wird mir helfen.", englishQuestion: "Will he help you?", englishAnswer: "Yes, he will help me." },
+    { question: "Wirst du einen Computer kaufen?", answer: "Ja, ich werde einen Computer kaufen.", englishQuestion: "Will you buy a computer?", englishAnswer: "Yes, I will buy a computer." },
+    { question: "Wird NUST dich annehmen?", answer: "Ja, NUST wird mich annehmen.", englishQuestion: "Will NUST accept you?", englishAnswer: "Yes, NUST will accept me." },
+    { question: "Hattest du vor der Prüfung gelernt?", answer: "Ja, ich hatte vor der Prüfung gelernt.", englishQuestion: "Had you studied before the test?", englishAnswer: "Yes, I had studied before the test." },
+    { question: "Hatte sie das Projekt beendet?", answer: "Ja, sie hatte das Projekt beendet.", englishQuestion: "Had she finished the project?", englishAnswer: "Yes, she had finished the project." },
+    { question: "Hattest du vorher einen Computer benutzt?", answer: "Ja, ich hatte einen Computer benutzt.", englishQuestion: "Had you used a computer before?", englishAnswer: "Yes, I had used a computer." },
+    { question: "Hatte es vor der Prüfung geregnet?", answer: "Ja, es hatte vor der Prüfung geregnet.", englishQuestion: "Had it rained before the exam?", englishAnswer: "Yes, it had rained before the exam." },
+    { question: "Hattest du Programmieren gelernt?", answer: "Ja, ich hatte Programmieren gelernt.", englishQuestion: "Had you learned coding?", englishAnswer: "Yes, I had learned coding." },
+    { question: "Hatten sie dir geholfen?", answer: "Ja, sie hatten mir geholfen.", englishQuestion: "Had they helped you?", englishAnswer: "Yes, they had helped me." },
+    { question: "Hattest du die Hausaufgaben beendet?", answer: "Ja, ich hatte die Hausaufgaben beendet.", englishQuestion: "Had you finished homework?", englishAnswer: "Yes, I had finished homework." },
+    { question: "Hatte sie NET bestanden?", answer: "Ja, sie hatte NET bestanden.", englishQuestion: "Had she passed NET?", englishAnswer: "Yes, she had passed NET." },
+    { question: "Hattest du NUST besucht?", answer: "Ja, ich hatte NUST besucht.", englishQuestion: "Had you visited NUST?", englishAnswer: "Yes, I had visited NUST." },
+    { question: "Hatte der Lehrer erklärt?", answer: "Ja, der Lehrer hatte erklärt.", englishQuestion: "Had the teacher explained?", englishAnswer: "Yes, the teacher had explained." },
+    { question: "Ist das Buch auf dem Tisch?", answer: "Ja, das Buch ist auf dem Tisch.", englishQuestion: "Is the book on the table?", englishAnswer: "Yes, the book is on the table." },
+    { question: "Lernst du morgens?", answer: "Ja, ich lerne morgens.", englishQuestion: "Do you study in the morning?", englishAnswer: "Yes, I study in the morning." },
+    { question: "Ist der Computer im Zimmer?", answer: "Ja, der Computer ist im Zimmer.", englishQuestion: "Is the computer in the room?", englishAnswer: "Yes, the computer is in the room." },
+    { question: "Sitzt du am Schreibtisch?", answer: "Ja, ich sitze am Schreibtisch.", englishQuestion: "Do you sit at the desk?", englishAnswer: "Yes, I sit at the desk." },
+    { question: "Ist die Tasche unter dem Stuhl?", answer: "Ja, die Tasche ist unter dem Stuhl.", englishQuestion: "Is the bag under the chair?", englishAnswer: "Yes, the bag is under the chair." },
+    { question: "Ist die Prüfung im März?", answer: "Ja, die Prüfung ist im März.", englishQuestion: "Is the exam in March?", englishAnswer: "Yes, the exam is in March." },
+    { question: "Ist der Stift in der Nähe des Buches?", answer: "Ja, der Stift ist in der Nähe des Buches.", englishQuestion: "Is the pen near the book?", englishAnswer: "Yes, the pen is near the book." },
+    { question: "Spielst du im Park?", answer: "Ja, ich spiele im Park.", englishQuestion: "Do you play in the park?", englishAnswer: "Yes, I play in the park." },
+    { question: "Ist das Notizbuch zwischen den Büchern?", answer: "Ja, das Notizbuch ist zwischen den Büchern.", englishQuestion: "Is the notebook between the books?", englishAnswer: "Yes, the notebook is between the books." },
+    { question: "Gehst du am Montag zur NUST?", answer: "Ja, ich gehe am Montag zur NUST.", englishQuestion: "Do you go to NUST on Monday?", englishAnswer: "Yes, I go to NUST on Monday." },
+    { question: "Ist das ein Computer?", answer: "Ja, das ist ein Computer.", englishQuestion: "Is this a computer?", englishAnswer: "Yes, this is a computer." },
+    { question: "Hast du einen Apfel?", answer: "Ja, ich habe einen Apfel.", englishQuestion: "Do you have an apple?", englishAnswer: "Yes, I have an apple." },
+    { question: "Ist Islamabad die Hauptstadt?", answer: "Ja, Islamabad ist die Hauptstadt.", englishQuestion: "Is Islamabad the capital?", englishAnswer: "Yes, Islamabad is the capital." },
+    { question: "Ist das eine Prüfung?", answer: "Ja, das ist eine Prüfung.", englishQuestion: "Is this an exam?", englishAnswer: "Yes, this is an exam." },
+    { question: "Ist NUST die beste Universität?", answer: "Ja, NUST ist die beste Universität.", englishQuestion: "Is NUST the best university?", englishAnswer: "Yes, NUST is the best university." },
+    { question: "Möchtest du einen Bleistift?", answer: "Ja, ich möchte einen Bleistift.", englishQuestion: "Do you want a pencil?", englishAnswer: "Yes, I want a pencil." },
+    { question: "Ist der Himmel blau?", answer: "Ja, der Himmel ist blau.", englishQuestion: "Is the sky blue?", englishAnswer: "Yes, the sky is blue." },
+    { question: "Hast du einen Regenschirm?", answer: "Ja, ich habe einen Regenschirm.", englishQuestion: "Do you have an umbrella?", englishAnswer: "Yes, I have an umbrella." },
+    { question: "Ist eine Tastatur zum Tippen?", answer: "Ja, eine Tastatur ist zum Tippen.", englishQuestion: "Is a keyboard for typing?", englishAnswer: "Yes, a keyboard is for typing." },
+    { question: "Ist die Sonne hell?", answer: "Ja, die Sonne ist hell.", englishQuestion: "Is the sun bright?", englishAnswer: "Yes, the sun is bright." },
+    { question: "Ist Schwerkraft eine Kraft?", answer: "Ja, Schwerkraft ist eine Kraft.", englishQuestion: "Is gravity a force?", englishAnswer: "Yes, gravity is a force." },
+    { question: "Ist ein Stromkreis ein Weg für Strom?", answer: "Ja, ein Stromkreis ist ein Weg für Strom.", englishQuestion: "Is a circuit a path for electricity?", englishAnswer: "Yes, a circuit is a path for electricity." },
+    { question: "Speichert eine Datenbank Daten?", answer: "Ja, eine Datenbank speichert Daten.", englishQuestion: "Does a database store data?", englishAnswer: "Yes, a database stores data." },
+    { question: "Ist Energie die Fähigkeit zu arbeiten?", answer: "Ja, Energie ist die Fähigkeit zu arbeiten.", englishQuestion: "Is energy the ability to work?", englishAnswer: "Yes, energy is the ability to work." },
+    { question: "Ist Software für Computer?", answer: "Ja, Software ist für Computer.", englishQuestion: "Is software for computers?", englishAnswer: "Yes, software is for computers." },
+    { question: "Verbindet ein Netzwerk Computer?", answer: "Ja, ein Netzwerk verbindet Computer.", englishQuestion: "Does a network connect computers?", englishAnswer: "Yes, a network connects computers." },
+    { question: "Bedeutet Debuggen Fehler beheben?", answer: "Ja, Debuggen bedeutet Fehler beheben.", englishQuestion: "Does debug mean fixing errors?", englishAnswer: "Yes, debug means fixing errors." },
+    { question: "Ist Geschwindigkeit Schnelligkeit mit Richtung?", answer: "Ja, Geschwindigkeit ist Schnelligkeit mit Richtung.", englishQuestion: "Is velocity speed with direction?", englishAnswer: "Yes, velocity is speed with direction." },
+    { question: "Speichert eine Variable Daten?", answer: "Ja, eine Variable speichert Daten.", englishQuestion: "Does a variable store data?", englishAnswer: "Yes, a variable stores data." },
+    { question: "Ist ein Server für Netzwerkdaten?", answer: "Ja, ein Server ist für Netzwerkdaten.", englishQuestion: "Is a server for network data?", englishAnswer: "Yes, a server is for network data." },
+    { question: "Benutzt du Computer zum Lernen?", answer: "Ja, ich benutze Computer zum Lernen.", englishQuestion: "Do you use computers for study?", englishAnswer: "Yes, I use computers for study." },
+    { question: "Kannst du NET bestehen?", answer: "Ja, ich kann NET bestehen.", englishQuestion: "Can you pass NET?", englishAnswer: "Yes, I can pass NET." },
+    { question: "Studieren Studenten an der NUST?", answer: "Ja, Studenten studieren an der NUST.", englishQuestion: "Do students study at NUST?", englishAnswer: "Yes, students study at NUST." },
+    { question: "Ist Englisch wichtig für NET?", answer: "Ja, Englisch ist wichtig für NET.", englishQuestion: "Is English important for NET?", englishAnswer: "Yes, English is important for NET." },
+    { question: "Bereitest du dich täglich auf NET vor?", answer: "Ja, ich bereite mich täglich auf NET vor.", englishQuestion: "Do you prepare daily for NET?", englishAnswer: "Yes, I prepare daily for NET." },
+    { question: "Ist Mathematik für BS CS nötig?", answer: "Ja, Mathematik ist für BS CS nötig.", englishQuestion: "Is math needed for BS CS?", englishAnswer: "Yes, math is needed for BS CS." },
+    { question: "Schläfst du gut vor Prüfungen?", answer: "Ja, ich schlafe gut vor Prüfungen.", englishQuestion: "Do you sleep well before exams?", englishAnswer: "Yes, I sleep well before exams." },
+    { question: "Ist harte Arbeit der Schlüssel zum Erfolg?", answer: "Ja, harte Arbeit ist der Schlüssel zum Erfolg.", englishQuestion: "Is hard work key to success?", englishAnswer: "Yes, hard work is key to success." },
+    { question: "Wählt NET gute Studenten aus?", answer: "Ja, NET wählt gute Studenten aus.", englishQuestion: "Does NET select good students?", englishAnswer: "Yes, NET selects good students." },
+    { question: "Wirst du der NUST beitreten?", answer: "Ja, ich werde der NUST beitreten.", englishQuestion: "Will you join NUST?", englishAnswer: "Yes, I will join NUST." },
+    { question: "Ist eine CPU das Gehirn eines Computers?", answer: "Ja, eine CPU ist das Gehirn eines Computers.", englishQuestion: "Is a CPU the brain of a computer?", englishAnswer: "Yes, a CPU is the brain of a computer." },
+    { question: "Speichert RAM temporäre Daten?", answer: "Ja, RAM speichert temporäre Daten.", englishQuestion: "Does RAM store temporary data?", englishAnswer: "Yes, RAM stores temporary data." },
+    { question: "Ist Python eine Programmiersprache?", answer: "Ja, Python ist eine Programmiersprache.", englishQuestion: "Is Python a programming language?", englishAnswer: "Yes, Python is a programming language." },
+    { question: "Ist ein Virus schädliche Software?", answer: "Ja, ein Virus ist schädliche Software.", englishQuestion: "Is a virus harmful software?", englishAnswer: "Yes, a virus is harmful software." },
+    { question: "Übst du täglich Englisch?", answer: "Ja, ich übe täglich Englisch.", englishQuestion: "Do you practice English daily?", englishAnswer: "Yes, I practice English daily." },
+    { question: "Ist Physik wichtig für BS CS?", answer: "Ja, Physik ist wichtig für BS CS.", englishQuestion: "Is physics important for BS CS?", englishAnswer: "Yes, physics is important for BS CS." },
+    { question: "Verstehst du Algorithmen?", answer: "Ja, ich verstehe Algorithmen.", englishQuestion: "Do you understand algorithms?", englishAnswer: "Yes, I understand algorithms." },
+    { question: "Ist Programmieren Spaß?", answer: "Ja, Programmieren ist Spaß.", englishQuestion: "Is coding fun?", englishAnswer: "Yes, coding is fun." },
+    { question: "Wirst du in NET hoch punkten?", answer: "Ja, ich werde in NET hoch punkten.", englishQuestion: "Will you score high in NET?", englishAnswer: "Yes, I will score high in NET." },
+    { question: "Ist NUST deine Traumuniversität?", answer: "Ja, NUST ist meine Traumuniversität.", englishQuestion: "Is NUST your dream university?", englishAnswer: "Yes, NUST is my dream university." }
+];
+        // Function to populate a table
+        function populateTable(tableBodyId, data) {
+            const tableBody = document.getElementById(tableBodyId);
+            tableBody.innerHTML = '';
+            
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                
+                // Question cell
+                const questionCell = document.createElement('td');
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'german-text';
+                questionDiv.innerHTML = `
+                    <button class="audio-btn" data-text="${item.question}">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    ${item.question}
+                `;
+                const questionEnglish = document.createElement('div');
+                questionEnglish.className = 'english-meaning';
+                questionEnglish.textContent = item.englishQuestion;
+                questionCell.appendChild(questionDiv);
+                questionCell.appendChild(questionEnglish);
+                
+                // Answer cell
+                const answerCell = document.createElement('td');
+                const answerDiv = document.createElement('div');
+                answerDiv.className = 'german-text';
+                answerDiv.innerHTML = `
+                    <button class="audio-btn" data-text="${item.answer}">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    ${item.answer}
+                `;
+                const answerEnglish = document.createElement('div');
+                answerEnglish.className = 'english-meaning';
+                answerEnglish.textContent = item.englishAnswer;
+                answerCell.appendChild(answerDiv);
+                answerCell.appendChild(answerEnglish);
+                
+                row.appendChild(questionCell);
+                row.appendChild(answerCell);
+                tableBody.appendChild(row);
+            });
+            
+            // Add audio functionality to all audio buttons in this table
+            document.querySelectorAll(`#${tableBodyId} .audio-btn`).forEach(button => {
+                button.addEventListener('click', function() {
+                    const text = this.getAttribute('data-text');
+                    speakText(text, this);
+                });
+            });
+        }
+
+        // Text-to-speech function with female German voice
+        function speakText(text, button) {
+            // Stop any currently playing speech
+            window.speechSynthesis.cancel();
+            
+            // Remove playing class from all buttons
+            document.querySelectorAll('.audio-btn').forEach(btn => {
+                btn.classList.remove('playing');
+            });
+            
+            // Add playing class to current button
+            button.classList.add('playing');
+            
+            // Create speech synthesis
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'de-DE';
+            utterance.rate = 0.9;
+            utterance.pitch = 1.1; // Slightly higher pitch for female voice
+            
+            // Try to find a female German voice
+            const voices = speechSynthesis.getVoices();
+            let germanFemaleVoice = voices.find(voice => 
+                voice.lang === 'de-DE' && 
+                (voice.name.includes('female') || voice.name.includes('Female') || 
+                 voice.name.includes('Anna') || voice.name.includes('Petra') ||
+                 voice.name.includes('Vicki') || voice.name.includes('Google Deutsch') ||
+                 voice.name.includes('Microsoft Hedda'))
+            );
+            
+            // If no specific female voice found, use any German voice
+            if (!germanFemaleVoice) {
+                germanFemaleVoice = voices.find(voice => voice.lang === 'de-DE');
+            }
+            
+            if (germanFemaleVoice) {
+                utterance.voice = germanFemaleVoice;
+            }
+            
+            // When speech ends, remove playing class
+            utterance.onend = function() {
+                button.classList.remove('playing');
+            };
+            
+            // Speak the text
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Menu dropdown
+        const menuBtn = document.getElementById('menuBtn');
+        const dropdown = document.getElementById('dropdown');
+        
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+
+
+        // Add hover effects to all buttons and interactive elements
+        document.querySelectorAll('button, .nav-links a, .dropdown a').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Level buttons functionality
+        document.querySelectorAll('.level-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.level-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all tables
+                document.querySelectorAll('.table-container').forEach(table => {
+                    table.classList.remove('active');
+                });
+                
+                // Show the selected table
+                const level = this.getAttribute('data-level');
+                document.getElementById(`${level}Table`).classList.add('active');
+            });
+        });
+
+        // Populate the tables when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            populateTable('basicTableBody', basicGermanData);
+            populateTable('intermediateTableBody', intermediateGermanData);
+            // Populate advanced table with advancedGermanData
+            populateTable('advancedTableBody', advancedGermanData);
+        });
+
+        // Load voices when they become available
+        speechSynthesis.addEventListener('voiceschanged', () => {
+            // Re-populate the tables to ensure audio buttons use the latest voices
+            populateTable('basicTableBody', basicGermanData);
+            populateTable('intermediateTableBody', intermediateGermanData);
+            populateTable('advancedTableBody', advancedGermanData);
+        });
+    </script>
+</body>
+</html>

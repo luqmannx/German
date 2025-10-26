@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>German Grammar</title>
+     <link rel="icon" href="/assets/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            font-size: 14px;
+            line-height: 1.5;
+            position: relative;
+        }
+
+        /* Background Image with Transparency */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(
+                    rgba(0, 0, 0, 0.85), 
+                    rgba(0, 0, 0, 0.9)
+                ),
+                url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1200&h=800&fit=crop') center/cover;
+            opacity: 0.4;
+            z-index: -1;
+            filter: blur(1px) grayscale(30%);
+        }
+
+        /* Full screen layout */
+        html, body {
+            height: 100%;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            margin-top: 60px;
+        }
+
+        /* Enhanced Sticky Navigation - Glass Effect */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 4px 20px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 20px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            padding: 8px 16px;
+            border-radius: 20px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            transform: translateY(-1px);
+            box-shadow: 
+                0 6px 20px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        /* Search Bar - Glass Effect */
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            width: 200px;
+            transition: all 0.4s ease;
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: rgba(255, 255, 255, 0.2);
+            width: 250px;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.1),
+                0 2px 12px rgba(255, 255, 255, 0.1);
+        }
+
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Enhanced Dropdown Menu - Glass Effect */
+        .dropdown {
+            position: fixed;
+            top: 70px;
+            left: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 15px;
+            display: none;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 999;
+            min-width: 180px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .dropdown.active {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .dropdown a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 12px 16px;
+            border-radius: 10px;
+            transition: all 0.4s ease;
+            font-weight: 600;
+            background: transparent;
+            backdrop-filter: none;
+            border: none;
+            box-shadow: none;
+        }
+
+        .dropdown a:hover {
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            transform: translateX(5px);
+            border-radius: 10px;
+            box-shadow: none;
+        }
+
+        /* Content Boxes - Enhanced Glass Effect */
+        .content-box {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            color: #fff;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                inset 0 0 20px rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 2;
+        }
+
+        .content-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 
+                0 12px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15),
+                inset 0 0 25px rgba(255, 255, 255, 0.08);
+        }
+
+        .content-box h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: 600;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-box p {
+            line-height: 1.6;
+            font-size: 15px;
+            margin-bottom: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .content-box strong {
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        /* German Container Styles */
+        .german-container {
+            opacity: 1;
+            margin-top: 80px;
+            padding: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .level-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .level-btn {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            box-shadow: 
+                0 4px 12px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .level-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .level-btn.active {
+            background: rgba(255, 255, 255, 0.9);
+            color: #000;
+            box-shadow: 
+                0 6px 20px rgba(255, 255, 255, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer - Glass Effect */
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            margin-top: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        footer p {
+            margin: 8px 0;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus states for accessibility */
+        button:focus,
+        input:focus,
+        a:focus {
+            outline: 2px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 3px;
+            border-radius: 25px;
+        }
+
+        /* Grammar-specific styles */
+        .grammar-content {
+            display: none;
+        }
+        
+        .grammar-content.active {
+            display: block;
+        }
+        
+        .grammar-rule {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .grammar-rule:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .rule-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #4fc3f7;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+        
+        .rule-explanation {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .example-box {
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 4px solid #4fc3f7;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .german-example {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .english-translation {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-style: italic;
+        }
+        
+        .tip-box {
+            background: rgba(79, 195, 247, 0.1);
+            border: 1px solid rgba(79, 195, 247, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .tip-title {
+            font-weight: 600;
+            color: #4fc3f7;
+            margin-bottom: 8px;
+        }
+        
+        .grammar-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .grammar-table th {
+            background: rgba(79, 195, 247, 0.2);
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .grammar-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .grammar-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .grammar-section {
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 30px 0 20px 0;
+            color: #fff;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+        }
+        
+        .grammar-formula {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            margin: 10px 0;
+            border-left: 3px solid #4fc3f7;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .search-input {
+                width: 150px;
+            }
+            
+            .search-input:focus {
+                width: 180px;
+            }
+
+            .level-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .level-btn {
+                width: 200px;
+            }
+
+            .grammar-rule {
+                padding: 15px;
+            }
+
+            .rule-title {
+                font-size: 18px;
+            }
+
+            body::before {
+                background-attachment: scroll;
+            }
+        }
+
+        /* Ensure content is readable over background */
+        .german-container > * {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <button class="menu-btn" id="menuBtn">MENU</button>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="SEARCH..." id="searchInput">
+        </div>
+    </nav>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown" id="dropdown">
+         <a href="/index.html">Home</a>
+        <a href="/html/conversation.html">Conversations</a>
+        <a href="/html/vocaublary.html">Vocabulary</a>
+        <a href="/html/grammer.html">Grammar</a>
+    </div>
+
+    <!-- German Content -->
+    <div class="container">
+        <div class="german-container">
+            <div class="content-box">
+                <h2>German Grammar</h2>
+                <p>Master German grammar with these comprehensive rules and examples. From basic sentence structure to advanced concepts, learn how to build correct German sentences.</p>
+                
+                <div class="level-buttons">
+                    <button class="level-btn active" data-level="basic">Basic</button>
+                    <button class="level-btn" data-level="intermediate">Intermediate</button>
+                    <button class="level-btn" data-level="advanced">Advanced</button>
+                </div>
+            </div>
+
+            <!-- Basic Grammar Content -->
+            <div class="grammar-content active" id="basicContent">
+                <div class="grammar-section">
+                    <h2 class="section-title">Basic German Grammar Rules</h2>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">1. Nouns Are Always Capitalized</h3>
+                        <div class="rule-explanation">In German, all nouns (person, place, thing, idea) start with a capital letter.</div>
+                        <div class="example-box">
+                            <div class="german-example">Das Haus ist groß.</div>
+                            <div class="english-translation">The house is big.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich liebe Musik.</div>
+                            <div class="english-translation">I love music.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>This helps you quickly identify nouns when reading German.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">2. Nouns Have Genders (der, die, das)</h3>
+                        <div class="rule-explanation">Every noun has one of three genders: der (masculine), die (feminine), das (neuter).</div>
+                        <div class="example-box">
+                            <div class="german-example">der Mann (the man)</div>
+                            <div class="german-example">die Frau (the woman)</div>
+                            <div class="german-example">das Kind (the child)</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Always learn nouns with their article! Example: der Tisch, not just Tisch.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">3. Plural Forms Vary</h3>
+                        <div class="rule-explanation">Plural endings differ; there's no single pattern.</div>
+                        <div class="example-box">
+                            <div class="german-example">der Hund → die Hunde (dogs)</div>
+                            <div class="german-example">das Kind → die Kinder (children)</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Learn the plural with the noun. Use flashcards like: der Hund – die Hunde.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">4. Verb in Second Position (Main Clause Rule)</h3>
+                        <div class="rule-explanation">In a normal German sentence, the verb always comes second.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich gehe zur Schule.</div>
+                            <div class="english-translation">I go to school.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Heute gehe ich zur Schule.</div>
+                            <div class="english-translation">Today I go to school.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Even if something comes first, verb stays second!</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">5. Verb at the End (Subordinate Clauses)</h3>
+                        <div class="rule-explanation">In dependent clauses (introduced by weil, dass, etc.), the verb moves to the end.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich bleibe zu Hause, weil es regnet.</div>
+                            <div class="english-translation">I stay home because it's raining.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Watch for weil, dass, obwohl, wenn — they push verbs to the end.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">6. Word Order in Questions</h3>
+                        <div class="rule-explanation">In yes/no questions, the verb comes first.</div>
+                        <div class="example-box">
+                            <div class="german-example">Kommst du heute?</div>
+                            <div class="english-translation">Are you coming today?</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Hast du Hunger?</div>
+                            <div class="english-translation">Are you hungry?</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">7. The Four Cases (Nominative, Accusative, Dative, Genitive)</h3>
+                        <div class="rule-explanation">Articles and adjectives change depending on the case.</div>
+                        <div class="example-box">
+                            <div class="german-example">Nominative: Der Mann schläft.</div>
+                            <div class="english-translation">The man sleeps.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Accusative: Ich sehe den Mann.</div>
+                            <div class="english-translation">I see the man.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Dative: Ich gebe dem Mann ein Buch.</div>
+                            <div class="english-translation">I give the man a book.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Case = function of the noun in the sentence.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">8. Personal Pronouns</h3>
+                        <div class="rule-explanation">Pronouns change depending on who is speaking.</div>
+                        <div class="example-box">
+                            <div class="german-example">ich (I), du (you), er/sie/es (he/she/it), wir (we), ihr (you all), sie/Sie (they/You formal)</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich liebe dich.</div>
+                            <div class="english-translation">I love you.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">9. Regular & Irregular Verbs</h3>
+                        <div class="rule-explanation">Most verbs follow a pattern, but some are irregular.</div>
+                        <div class="example-box">
+                            <div class="german-example">Regular: spielen → ich spiele, du spielst, er spielt</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Irregular: sein → ich bin, du bist, er ist</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Always memorize irregular verbs separately.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">10. Separable Verbs</h3>
+                        <div class="rule-explanation">Prefix detaches and moves to the end of the sentence.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich rufe dich an.</div>
+                            <div class="english-translation">I call you. (anrufen = to call)</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>The prefix carries extra meaning; "anrufen" ≠ "rufen".</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">11. Modal Verbs</h3>
+                        <div class="rule-explanation">These verbs modify another verb and send the main verb to the end (in infinitive form).</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich kann Deutsch sprechen.</div>
+                            <div class="english-translation">I can speak German.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Common modals:</div>
+                            <div>können, müssen, sollen, dürfen, wollen, mögen.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">12. Negation with "nicht" and "kein"</h3>
+                        <div class="rule-explanation">
+                            <ul>
+                                <li>Use <strong>nicht</strong> = not</li>
+                                <li>Use <strong>kein</strong> = no / not any (for nouns)</li>
+                            </ul>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich spiele nicht.</div>
+                            <div class="english-translation">I don't play.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich habe kein Auto.</div>
+                            <div class="english-translation">I don't have a car.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">13. Adjective Endings Change with Case and Gender</h3>
+                        <div class="rule-explanation">The adjective agrees with the article and noun.</div>
+                        <div class="example-box">
+                            <div class="german-example">Der große Hund (masc)</div>
+                            <div class="german-example">Die große Katze (fem)</div>
+                            <div class="german-example">Das große Haus (neut)</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Adjective endings are tough — learn with examples!</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">14. Time – Manner – Place (TMP Rule)</h3>
+                        <div class="rule-explanation">The normal word order for sentence elements: Time → Manner → Place</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich gehe morgen mit meinem Freund in die Stadt.</div>
+                            <div class="english-translation">I'm going tomorrow with my friend into the city.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">15. Possessive Pronouns</h3>
+                        <div class="rule-explanation">mein (my), dein (your), sein (his), ihr (her), unser (our), euer (your plural), ihr/Ihr (their/your formal)</div>
+                        <div class="example-box">
+                            <div class="german-example">Das ist mein Buch.</div>
+                            <div class="english-translation">That is my book.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">16. Prepositions and Their Cases</h3>
+                        <div class="rule-explanation">Each preposition demands a specific case (Akkusativ, Dativ, or both).</div>
+                        <div class="example-box">
+                            <div class="german-example">mit → Dativ (Ich gehe mit meinem Freund.)</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">für → Akkusativ (Das ist für dich.)</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Memorize prepositions with their case.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">17. Perfect Tense (Past with "haben" or "sein")</h3>
+                        <div class="rule-explanation">Use haben or sein + past participle.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich habe gegessen.</div>
+                            <div class="english-translation">I have eaten.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich bin gegangen.</div>
+                            <div class="english-translation">I went.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Movement verbs use sein (gehen, fahren), others haben.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">18. Future Tense with "werden"</h3>
+                        <div class="rule-explanation">Use "werden" + infinitive to form future.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich werde Deutsch lernen.</div>
+                            <div class="english-translation">I will learn German.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">19. Imperative (Commands)</h3>
+                        <div class="rule-explanation">Use the verb stem directly for giving orders.</div>
+                        <div class="example-box">
+                            <div class="german-example">Komm!</div>
+                            <div class="english-translation">Come!</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Lernen Sie Deutsch!</div>
+                            <div class="english-translation">Learn German! (formal)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">20. Word Order Flexibility</h3>
+                        <div class="rule-explanation">German allows movement of parts for emphasis — but the verb stays second!</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich trinke Kaffee morgens.</div>
+                            <div class="english-translation">I drink coffee in the morning.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Morgens trinke ich Kaffee.</div>
+                            <div class="english-translation">I drink coffee in the morning.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Intermediate Grammar Content -->
+            <div class="grammar-content" id="intermediateContent">
+                <div class="grammar-section">
+                    <h2 class="section-title">Intermediate German Grammar</h2>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">German Sentence Structure (SVO Rule)</h3>
+                        <div class="rule-explanation">The normal word order in German is Subject – Verb – Object.</div>
+                        <div class="grammar-formula">Subject + Verb + Object</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich lerne Deutsch.</div>
+                            <div class="english-translation">I learn German.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Du trinkst Wasser.</div>
+                            <div class="english-translation">You drink water.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Just like English in simple sentences, but verbs can move depending on clause type.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">German Sentence Variations</h3>
+                        <div class="example-box">
+                            <div class="german-example">Statement: Ich gehe zur Schule.</div>
+                            <div class="english-translation">I go to school.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Yes/No Question: Gehst du zur Schule?</div>
+                            <div class="english-translation">Do you go to school?</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">W-Question: Wo gehst du hin?</div>
+                            <div class="english-translation">Where are you going?</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Command: Geh zur Schule!</div>
+                            <div class="english-translation">Go to school!</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Note:</div>
+                            <div>In yes/no questions and commands, the verb always comes first.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Präsens (Present Tense)</h3>
+                        <div class="rule-explanation">To describe current actions, habits, and facts.</div>
+                        <div class="grammar-formula">Subject + Verb (in present form) + Object</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich lerne Deutsch.</div>
+                            <div class="english-translation">I learn / am learning German.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Sie spielt Klavier.</div>
+                            <div class="english-translation">She plays piano.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Note:</div>
+                            <div>Präsens can mean both "I learn" and "I am learning."</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Perfekt (Present Perfect Tense)</h3>
+                        <div class="rule-explanation">For past actions that are completed, usually in spoken German.</div>
+                        <div class="grammar-formula">Subject + haben/sein + Participle (ge + stem + t/en)</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich habe gegessen.</div>
+                            <div class="english-translation">I have eaten.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Er ist gegangen.</div>
+                            <div class="english-translation">He went.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>haben is used for most verbs; sein for movement or change of state.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Präteritum (Simple Past)</h3>
+                        <div class="rule-explanation">Describes past actions, used mainly in written language (books, news, etc.).</div>
+                        <div class="grammar-formula">Verb in past form</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich ging nach Hause.</div>
+                            <div class="english-translation">I went home.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Er sagte nichts.</div>
+                            <div class="english-translation">He said nothing.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>In daily speech, people prefer Perfekt instead of Präteritum, except for verbs like sein and haben.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Plusquamperfekt (Past Perfect)</h3>
+                        <div class="rule-explanation">To describe an action that happened before another past action.</div>
+                        <div class="grammar-formula">Subject + hatte/war + Participle</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich hatte gegessen, bevor du kamst.</div>
+                            <div class="english-translation">I had eaten before you came.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Er war gegangen, als es regnete.</div>
+                            <div class="english-translation">He had left when it rained.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>haben → hatte, sein → war</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Futur I (Future Tense)</h3>
+                        <div class="rule-explanation">For future plans or assumptions.</div>
+                        <div class="grammar-formula">Subject + werden + Infinitive</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich werde Deutsch lernen.</div>
+                            <div class="english-translation">I will learn German.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Sie wird kommen.</div>
+                            <div class="english-translation">She will come.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>werden = "will"</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Futur II (Future Perfect)</h3>
+                        <div class="rule-explanation">Describes an action that will have been completed in the future.</div>
+                        <div class="grammar-formula">Subject + werden + Participle + haben/sein</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich werde gegessen haben.</div>
+                            <div class="english-translation">I will have eaten.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Er wird gegangen sein.</div>
+                            <div class="english-translation">He will have gone.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Mostly used in formal or written contexts.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Articles and Gender</h3>
+                        <div class="rule-explanation">Every noun belongs to one of three genders.</div>
+                        <table class="grammar-table">
+                            <tr>
+                                <th>Gender</th>
+                                <th>Article</th>
+                                <th>Example</th>
+                                <th>Meaning</th>
+                            </tr>
+                            <tr>
+                                <td>Masculine</td>
+                                <td>der</td>
+                                <td>der Tisch</td>
+                                <td>the table</td>
+                            </tr>
+                            <tr>
+                                <td>Feminine</td>
+                                <td>die</td>
+                                <td>die Lampe</td>
+                                <td>the lamp</td>
+                            </tr>
+                            <tr>
+                                <td>Neuter</td>
+                                <td>das</td>
+                                <td>das Haus</td>
+                                <td>the house</td>
+                            </tr>
+                        </table>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Gender isn't always logical — learn it with each word!</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Cases (Nominative, Accusative, Dative, Genitive)</h3>
+                        <table class="grammar-table">
+                            <tr>
+                                <th>Case</th>
+                                <th>Function</th>
+                                <th>Example</th>
+                                <th>Translation</th>
+                            </tr>
+                            <tr>
+                                <td>Nominative</td>
+                                <td>Subject</td>
+                                <td>Der Mann isst.</td>
+                                <td>The man eats.</td>
+                            </tr>
+                            <tr>
+                                <td>Accusative</td>
+                                <td>Direct Object</td>
+                                <td>Ich sehe den Mann.</td>
+                                <td>I see the man.</td>
+                            </tr>
+                            <tr>
+                                <td>Dative</td>
+                                <td>Indirect Object</td>
+                                <td>Ich gebe dem Mann ein Buch.</td>
+                                <td>I give the man a book.</td>
+                            </tr>
+                            <tr>
+                                <td>Genitive</td>
+                                <td>Possession</td>
+                                <td>Das ist das Auto des Mannes.</td>
+                                <td>That is the man's car.</td>
+                            </tr>
+                        </table>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Short Trick:</div>
+                            <div>
+                                <ul>
+                                    <li>Wer? (Who?) → Nominative</li>
+                                    <li>Wen? (Whom?) → Accusative</li>
+                                    <li>Wem? (To whom?) → Dative</li>
+                                    <li>Wessen? (Whose?) → Genitive</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Prepositions and Their Cases</h3>
+                        <table class="grammar-table">
+                            <tr>
+                                <th>Preposition</th>
+                                <th>Case</th>
+                                <th>Example</th>
+                                <th>Meaning</th>
+                            </tr>
+                            <tr>
+                                <td>mit</td>
+                                <td>Dative</td>
+                                <td>Ich fahre mit dem Bus.</td>
+                                <td>I go by bus.</td>
+                            </tr>
+                            <tr>
+                                <td>für</td>
+                                <td>Accusative</td>
+                                <td>Das ist für dich.</td>
+                                <td>That is for you.</td>
+                            </tr>
+                            <tr>
+                                <td>bei</td>
+                                <td>Dative</td>
+                                <td>Ich bin bei meiner Freundin.</td>
+                                <td>I am at my girlfriend's place.</td>
+                            </tr>
+                            <tr>
+                                <td>ohne</td>
+                                <td>Accusative</td>
+                                <td>Ich gehe ohne dich.</td>
+                                <td>I go without you.</td>
+                            </tr>
+                        </table>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Rule:</div>
+                            <div>
+                                <ul>
+                                    <li>Some always take Dative (mit, nach, von, bei, seit, aus, zu).</li>
+                                    <li>Some always take Accusative (für, ohne, durch, gegen, um).</li>
+                                    <li>Two-way prepositions (an, auf, hinter, in, neben, über, unter, vor, zwischen) depend on movement vs. location.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Modal Verbs</h3>
+                        <table class="grammar-table">
+                            <tr>
+                                <th>Verb</th>
+                                <th>Meaning</th>
+                                <th>Example</th>
+                            </tr>
+                            <tr>
+                                <td>können</td>
+                                <td>can / be able to</td>
+                                <td>Ich kann schwimmen. (I can swim.)</td>
+                            </tr>
+                            <tr>
+                                <td>müssen</td>
+                                <td>must / have to</td>
+                                <td>Ich muss lernen. (I must study.)</td>
+                            </tr>
+                            <tr>
+                                <td>dürfen</td>
+                                <td>may / allowed to</td>
+                                <td>Du darfst gehen. (You may go.)</td>
+                            </tr>
+                            <tr>
+                                <td>wollen</td>
+                                <td>want to</td>
+                                <td>Ich will essen. (I want to eat.)</td>
+                            </tr>
+                            <tr>
+                                <td>sollen</td>
+                                <td>should</td>
+                                <td>Du sollst schlafen. (You should sleep.)</td>
+                            </tr>
+                        </table>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>The main verb goes to the end in infinitive form.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Separable Verbs</h3>
+                        <div class="rule-explanation">Many verbs have prefixes that separate in sentences.</div>
+                        <table class="grammar-table">
+                            <tr>
+                                <th>Verb</th>
+                                <th>Meaning</th>
+                                <th>Example</th>
+                            </tr>
+                            <tr>
+                                <td>anrufen</td>
+                                <td>to call</td>
+                                <td>Ich rufe dich an. (I call you.)</td>
+                            </tr>
+                            <tr>
+                                <td>aufstehen</td>
+                                <td>to get up</td>
+                                <td>Ich stehe früh auf. (I get up early.)</td>
+                            </tr>
+                            <tr>
+                                <td>einkaufen</td>
+                                <td>to shop</td>
+                                <td>Wir kaufen im Supermarkt ein. (We shop in the supermarket.)</td>
+                            </tr>
+                        </table>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>The prefix "flies" to the end!</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Reflexive Verbs</h3>
+                        <div class="rule-explanation">Used when the subject acts on itself.</div>
+                        <div class="grammar-formula">Subject + Reflexive Pronoun + Verb</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich wasche mich.</div>
+                            <div class="english-translation">I wash myself.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Du freust dich.</div>
+                            <div class="english-translation">You are happy.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Reflexive pronouns: mich, dich, sich, uns, euch, sich.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Adjective Endings</h3>
+                        <div class="rule-explanation">They depend on case + gender + article.</div>
+                        <table class="grammar-table">
+                            <tr>
+                                <th>Article</th>
+                                <th>Masculine</th>
+                                <th>Feminine</th>
+                                <th>Neuter</th>
+                                <th>Plural</th>
+                            </tr>
+                            <tr>
+                                <td>der/die/das</td>
+                                <td>der große Hund</td>
+                                <td>die schöne Frau</td>
+                                <td>das kleine Kind</td>
+                                <td>die alten Häuser</td>
+                            </tr>
+                        </table>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Learn adjectives with examples, not charts alone!</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Negation (nicht / kein)</h3>
+                        <div class="rule-explanation">
+                            <ul>
+                                <li>nicht negates verbs, adjectives, or entire sentences.</li>
+                                <li>kein negates nouns.</li>
+                            </ul>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich komme nicht.</div>
+                            <div class="english-translation">I'm not coming.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich habe kein Auto.</div>
+                            <div class="english-translation">I don't have a car.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Comparatives & Superlatives</h3>
+                        <table class="grammar-table">
+                            <tr>
+                                <th>Degree</th>
+                                <th>Example</th>
+                                <th>Translation</th>
+                            </tr>
+                            <tr>
+                                <td>Positive</td>
+                                <td>groß</td>
+                                <td>big</td>
+                            </tr>
+                            <tr>
+                                <td>Comparative</td>
+                                <td>größer</td>
+                                <td>bigger</td>
+                            </tr>
+                            <tr>
+                                <td>Superlative</td>
+                                <td>am größten</td>
+                                <td>biggest</td>
+                            </tr>
+                        </table>
+                        <div class="example-box">
+                            <div class="german-example">Mein Haus ist größer als dein Haus.</div>
+                            <div class="english-translation">My house is bigger than yours.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">Passive Voice</h3>
+                        <div class="rule-explanation">To focus on the action, not the subject.</div>
+                        <div class="grammar-formula">werden + Participle</div>
+                        <div class="example-box">
+                            <div class="german-example">Das Haus wird gebaut.</div>
+                            <div class="english-translation">The house is being built.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Grammar Content -->
+            <div class="grammar-content" id="advancedContent">
+                <div class="grammar-section">
+                    <h2 class="section-title">Advanced German Grammar</h2>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">1. Subject–Verb Agreement</h3>
+                        <div class="rule-explanation">The verb always changes depending on who is doing the action.</div>
+                        <table class="grammar-table">
+                            <tr>
+                                <th>Person</th>
+                                <th>Verb "lernen" (to learn)</th>
+                                <th>Example</th>
+                            </tr>
+                            <tr>
+                                <td>ich</td>
+                                <td>lerne</td>
+                                <td>Ich lerne Deutsch. (I learn German.)</td>
+                            </tr>
+                            <tr>
+                                <td>du</td>
+                                <td>lernst</td>
+                                <td>Du lernst Englisch. (You learn English.)</td>
+                            </tr>
+                            <tr>
+                                <td>er/sie/es</td>
+                                <td>lernt</td>
+                                <td>Er lernt Spanisch. (He learns Spanish.)</td>
+                            </tr>
+                            <tr>
+                                <td>wir</td>
+                                <td>lernen</td>
+                                <td>Wir lernen zusammen. (We learn together.)</td>
+                            </tr>
+                        </table>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Always match verb endings to the subject — that's how Germans know who's doing what.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">2. Position of the Verb (Verb Always in Second Place)</h3>
+                        <div class="rule-explanation">In normal statements, the main verb is always the 2nd element — not necessarily the 2nd word.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich lerne Deutsch.</div>
+                            <div class="english-translation">I learn German.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Heute lerne ich Deutsch.</div>
+                            <div class="english-translation">Today I learn German.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">❌ Ich Deutsch lerne (incorrect)</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Even if something comes before the subject, the verb still stays 2nd.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">3. Time–Manner–Place Order</h3>
+                        <div class="rule-explanation">When you describe when, how, and where, always follow this order: Time → Manner → Place</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich gehe morgen mit meinen Freunden ins Kino.</div>
+                            <div class="english-translation">I'm going tomorrow with my friends to the cinema.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">4. The "weil" Rule (Verb Goes to the End)</h3>
+                        <div class="rule-explanation">Whenever you use weil (because), the verb moves to the end of the sentence.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich bleibe zu Hause, weil es regnet.</div>
+                            <div class="english-translation">I stay home because it's raining.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">5. The "dass" Rule</h3>
+                        <div class="rule-explanation">When using dass (that) to join sentences, move the verb to the end.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich weiß, dass du müde bist.</div>
+                            <div class="english-translation">I know that you are tired.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">6. Separable Verbs</h3>
+                        <div class="rule-explanation">Many verbs split into two parts. The prefix goes to the end of the sentence.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich stehe um sieben Uhr auf.</div>
+                            <div class="english-translation">I get up at 7 o'clock.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Er ruft seine Mutter an.</div>
+                            <div class="english-translation">He calls his mother.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Common prefixes: an-, auf-, ein-, mit-, zu-, zurück-</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">7. Reflexive Verbs</h3>
+                        <div class="rule-explanation">Used when the subject acts on itself — like I wash myself. Use mich / dich / sich / uns / euch after the verb.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich wasche mich.</div>
+                            <div class="english-translation">I wash myself.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Du freust dich.</div>
+                            <div class="english-translation">You are happy.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Wir setzen uns.</div>
+                            <div class="english-translation">We sit down.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">8. Question Formation</h3>
+                        <div class="rule-explanation">
+                            <ul>
+                                <li>W-questions: Question word + Verb + Subject</li>
+                                <li>Yes/No questions: Verb + Subject</li>
+                            </ul>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Wie heißt du?</div>
+                            <div class="english-translation">What's your name?</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Kommst du heute?</div>
+                            <div class="english-translation">Are you coming today?</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Always start a question with a verb or W-word.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">9. Word Order in Main vs Subordinate Clauses</h3>
+                        <div class="rule-explanation">
+                            <ul>
+                                <li>Main clause: Verb in 2nd place</li>
+                                <li>Subordinate clause: Verb at the end</li>
+                            </ul>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich gehe ins Kino, weil ich den Film sehen will.</div>
+                            <div class="english-translation">I'm going to the cinema because I want to see the movie.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">10. Modal Verbs (with another verb at the end)</h3>
+                        <div class="rule-explanation">Modal verbs express ability, permission, or need.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich kann tanzen.</div>
+                            <div class="english-translation">I can dance.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Du musst lernen.</div>
+                            <div class="english-translation">You must study.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Wir wollen gehen.</div>
+                            <div class="english-translation">We want to go.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>The second verb goes to the end in infinitive form.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">11. Negative Sentences (nicht / kein)</h3>
+                        <div class="rule-explanation">Use nicht for verbs/adjectives and kein for nouns.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich bin nicht müde.</div>
+                            <div class="english-translation">I am not tired.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich habe kein Auto.</div>
+                            <div class="english-translation">I don't have a car.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">12. Adjective Endings (After Articles)</h3>
+                        <div class="rule-explanation">Adjectives take different endings depending on the article.</div>
+                        <table class="grammar-table">
+                            <tr>
+                                <th>Article</th>
+                                <th>Masculine</th>
+                                <th>Feminine</th>
+                                <th>Neuter</th>
+                                <th>Plural</th>
+                            </tr>
+                            <tr>
+                                <td>der/die/das</td>
+                                <td>der kleine Hund</td>
+                                <td>die schöne Blume</td>
+                                <td>das alte Haus</td>
+                                <td>die netten Leute</td>
+                            </tr>
+                        </table>
+                        <div class="example-box">
+                            <div class="german-example">Der große Mann ist nett.</div>
+                            <div class="english-translation">The tall man is nice.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">13. Possessive Pronouns</h3>
+                        <div class="rule-explanation">Show ownership or belonging.</div>
+                        <table class="grammar-table">
+                            <tr>
+                                <th>English</th>
+                                <th>German</th>
+                                <th>Example</th>
+                            </tr>
+                            <tr>
+                                <td>my</td>
+                                <td>mein</td>
+                                <td>Mein Auto ist neu.</td>
+                            </tr>
+                            <tr>
+                                <td>your</td>
+                                <td>dein</td>
+                                <td>Dein Hund ist süß.</td>
+                            </tr>
+                            <tr>
+                                <td>his/her</td>
+                                <td>sein/ihr</td>
+                                <td>Sein Buch ist alt.</td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">14. Prepositions and Cases</h3>
+                        <div class="rule-explanation">Some prepositions take Accusative, some Dative, some both.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich gehe in die Schule.</div>
+                            <div class="english-translation">I'm going into the school — movement → Accusative</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich bin in der Schule.</div>
+                            <div class="english-translation">I'm in the school — location → Dative</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>"wo?" (where?) → Dative | "wohin?" (where to?) → Accusative</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">15. Comparisons</h3>
+                        <div class="rule-explanation">To compare two things, use -er and als.</div>
+                        <div class="example-box">
+                            <div class="german-example">Mein Bruder ist größer als ich.</div>
+                            <div class="english-translation">My brother is taller than me.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Er ist am klügsten.</div>
+                            <div class="english-translation">He is the smartest.</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>Superlative → add am -sten</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">16. The Verb "werden" (to become / will)</h3>
+                        <div class="rule-explanation">Has two important uses:</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich werde morgen kommen.</div>
+                            <div class="english-translation">I will come tomorrow. (Future)</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Er wird Arzt.</div>
+                            <div class="english-translation">He becomes a doctor. (Change)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">17. Past Tenses — Perfekt vs Präteritum</h3>
+                        <div class="rule-explanation">Both describe past actions.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich habe gespielt. (Perfekt – spoken)</div>
+                            <div class="german-example">Ich spielte. (Präteritum – written)</div>
+                        </div>
+                        <div class="tip-box">
+                            <div class="tip-title">💡 Tip:</div>
+                            <div>
+                                <ul>
+                                    <li>Perfekt → used in speech</li>
+                                    <li>Präteritum → used in writing</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">18. Word Placement with Two Verbs</h3>
+                        <div class="rule-explanation">If two verbs appear, the main verb goes to the end.</div>
+                        <div class="example-box">
+                            <div class="german-example">Ich will Deutsch lernen.</div>
+                            <div class="english-translation">I want to learn German.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich muss ins Kino gehen.</div>
+                            <div class="english-translation">I must go to the cinema.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">19. Passive Voice (focus on action)</h3>
+                        <div class="rule-explanation">Formed with werden + Participle II</div>
+                        <div class="example-box">
+                            <div class="german-example">Das Haus wird gebaut.</div>
+                            <div class="english-translation">The house is being built.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Das Essen wird gekocht.</div>
+                            <div class="english-translation">The food is being cooked.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grammar-rule">
+                        <h3 class="rule-title">20. Conjunctions (Connecting Words)</h3>
+                        <div class="rule-explanation">
+                            <ul>
+                                <li>Coordinating (no verb change): und, oder, aber, denn</li>
+                                <li>Subordinating (verb to end): weil, dass, obwohl, wenn</li>
+                            </ul>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich gehe, aber du bleibst.</div>
+                            <div class="english-translation">I go, but you stay.</div>
+                        </div>
+                        <div class="example-box">
+                            <div class="german-example">Ich komme nicht, weil ich krank bin.</div>
+                            <div class="english-translation">I'm not coming because I'm sick.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>STAY CURIOUS | STAY SECURE | KEEP HACKING</p>
+            <p>© 2025 Cyber Security Study Tracker | Built for Learning & Growth</p>
+        </footer>
+    </div>
+
+    <script>
+        // Menu dropdown
+        const menuBtn = document.getElementById('menuBtn');
+        const dropdown = document.getElementById('dropdown');
+        
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('focus', () => {
+            searchInput.style.width = '280px';
+        });
+
+        searchInput.addEventListener('blur', () => {
+            if (!searchInput.value) {
+                searchInput.style.width = '200px';
+            }
+        });
+
+        // Level buttons functionality
+        document.querySelectorAll('.level-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.level-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all content
+                document.querySelectorAll('.grammar-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show the selected content
+                const level = this.getAttribute('data-level');
+                document.getElementById(`${level}Content`).classList.add('active');
+            });
+        });
+
+        // Add hover effects to all buttons and interactive elements
+        document.querySelectorAll('button, .dropdown a').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-2px)';
+            });
+            element.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

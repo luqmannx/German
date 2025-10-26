@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary</title>
+     <link rel="icon" href="/assets/logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-left">
+            <button class="menu-btn" id="menuBtn">MENU</button>
+        </div>
+    </nav>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown" id="dropdown">
+        <a href="/index.html">Home</a>
+        <a href="/html/conversation.html">Conversations</a>
+        <a href="/html/vocaublary.html">Vocabulary</a>
+        <a href="/html/grammer.html">Grammar</a>
+    </div>
+
+    <!-- German Content -->
+    <div class="container">
+        <div class="german-container">
+            <div class="content-box">
+                <h2>German Vocabulary</h2>
+                <p>Practice your German vocabulary with this collection of common words. Click on any German word to hear its pronunciation with a female German voice.</p>
+                
+                <div class="level-buttons">
+                    <button class="level-btn active" data-level="basic">Basic</button>
+                    <button class="level-btn" data-level="intermediate">Intermediate</button>
+                    <button class="level-btn" data-level="advanced">Advanced</button>
+                </div>
+            </div>
+
+            <!-- Basic Level Table -->
+            <div class="table-container active" id="basicTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>German</th>
+                            <th>Pronunciation</th>
+                            <th>English</th>
+                            <th>Urdu</th>
+                            <th>Pashto</th>
+                            <th>Hindi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="basicTableBody">
+                        <!-- Table rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Intermediate Level Table -->
+            <div class="table-container" id="intermediateTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>German</th>
+                            <th>Pronunciation</th>
+                            <th>English</th>
+                            <th>Urdu</th>
+                            <th>Pashto</th>
+                            <th>Hindi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="intermediateTableBody">
+                        <!-- Table rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Advanced Level Table -->
+            <div class="table-container" id="advancedTable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>German</th>
+                            <th>Pronunciation</th>
+                            <th>English</th>
+                            <th>Urdu</th>
+                            <th>Pashto</th>
+                            <th>Hindi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="advancedTableBody">
+                        <!-- Table rows will be inserted here by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <p>STAY CURIOUS | STAY SECURE | KEEP HACKING</p>
+            <p>© 2025 Cyber Security Study Tracker | Built for Learning & Growth</p>
+        </footer>
+    </div>
+
+    <script>
+        // Parse the text data and create arrays for each level
+        function parseVocabularyData(text) {
+            const lines = text.trim().split('\n');
+            const data = [];
+            
+            // Skip the header lines (first 2 lines)
+            for (let i = 2; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (line.startsWith('|') && line.endsWith('|')) {
+                    const parts = line.split('|').map(part => part.trim()).filter(part => part !== '');
+                    
+                    if (parts.length >= 7) {
+                        data.push({
+                            german: parts[1],
+                            pronunciation: parts[2],
+                            english: parts[3],
+                            urdu: parts[4],
+                            pashto: parts[5],
+                            hindi: parts[6]
+                        });
+                    }
+                }
+            }
+            
+            return data;
+        }
+
+        // Basic vocabulary data from basic.txt
+        const basicVocabularyText = `| #  | German         | Pronunciation       | English               | Urdu          | Pashto (پښتو) | Hindi (اردو رسم الخط) |
+| -- | -------------- | ------------------- | --------------------- | ------------- | ------------- | --------------------- |
+| 1  | Hallo          | hah-loh             | Hello                 | ہیلو          | سلام          | ہیلو                  |
+| 2  | Tschüss        | choos               | Bye                   | خدا حافظ      | خداحافظ       | خدا حافظ              |
+| 3  | Ja             | yah                 | Yes                   | جی ہاں        | هو/هوه        | ہاں                   |
+| 4  | Nein           | nine                | No                    | نہیں          | نه            | نہیں                  |
+| 5  | Danke          | dahn-keh            | Thank you             | شکریہ         | مننه          | شکریہ                 |
+| 6  | Bitte          | bi-teh              | Please/You're welcome | براہ کرم      | مهرباني       | پلیز / کرپیا          |
+| 7  | Guten Morgen   | goo-ten mor-gen     | Good morning          | صبح بخیر      | سهار مو پخير  | صبح بخیر              |
+| 8  | Guten Tag      | goo-ten tahg        | Good day              | دن بخیر       | ورځ مو پخير   | نمستے                 |
+| 9  | Guten Abend    | goo-ten ah-bent     | Good evening          | شام بخیر      | ماښام مو پخير | شام بخیر              |
+| 10 | Gute Nacht     | goo-teh nahkt       | Good night            | شب بخیر       | شپه مو پخير   | شب بخیر               |
+| 11 | Wie geht's?    | vee gehts           | How are you?          | آپ کیسے ہیں؟  | څنګه یې؟      | آپ کیسے ہیں؟          |
+| 12 | Mir geht's gut | meer ge-ets goot    | I'm fine              | میں ٹھیک ہوں  | زه ښه يم      | میں ٹھیک ہوں          |
+| 13 | Entschuldigung | ent-shool-dee-goong | Sorry/Excuse me       | معاف کیجیے    | بښنه غواړم    | سوری                  |
+| 14 | Mann           | mahn                | Man                   | مرد           | سړی           | آدمی                  |
+| 15 | Frau           | frow                | Woman                 | عورت          | ښځه           | عورت                  |
+| 16 | Kind           | kind                | Child                 | بچہ           | ماشوم         | بچہ                   |
+| 17 | Junge          | yoong-eh            | Boy                   | لڑکا          | هلک           | لڑکا                  |
+| 18 | Mädchen        | mayd-shen           | Girl                  | لڑکی          | نجلۍ          | لڑکی                  |
+| 19 | Freund         | froint              | Friend (male)         | دوست          | ملګری         | دوست                  |
+| 20 | Freundin       | froin-din           | Friend (female)       | سہیلی         | ملګرې         | سہیلی                 |
+| 21 | Wasser         | vah-ser             | Water                 | پانی          | اوبه          | پانی                  |
+| 22 | Brot           | broht               | Bread                 | روٹی          | ډوډۍ          | روٹی                  |
+| 23 | Milch          | milh                | Milk                  | دودھ          | شيدې          | دودھ                  |
+| 24 | Apfel          | ap-fel              | Apple                 | سیب           | مڼه           | سیب                   |
+| 25 | Banane         | bah-nah-neh         | Banana                | کیلا          | کیله          | کیلا                  |
+| 26 | Tisch          | tish                | Table                 | میز           | مېز           | میز                   |
+| 27 | Stuhl          | shtool              | Chair                 | کرسی          | څوکۍ          | کرسی                  |
+| 28 | Tür            | toor                | Door                  | دروازہ        | دروازه        | دروازہ                |
+| 29 | Fenster        | fen-ster            | Window                | کھڑکی         | کړکۍ          | کھڑکی                 |
+| 30 | Haus           | hows                | House                 | گھر           | کور           | گھر                   |
+| 31 | Zimmer         | tsi-mer             | Room                  | کمرہ          | کوټه          | کمرہ                  |
+| 32 | Bett           | bet                 | Bed                   | بستر          | کټ            | بستر                  |
+| 33 | Lampe          | lam-peh             | Lamp                  | لیمپ          | څراغ          | لیمپ                  |
+| 34 | Buch           | booch               | Book                  | کتاب          | کتاب          | کتاب                  |
+| 35 | Schule         | shoo-leh            | School                | سکول          | ښوونځی        | اسکول                 |
+| 36 | Lehrer         | lay-rer             | Teacher (male)        | استاد         | ښوونکی        | استاد                 |
+| 37 | Lehrerin       | lay-rer-in          | Teacher (female)      | استانی        | ښوونکې        | استانی                |
+| 38 | Schüler        | shoo-ler            | Student (male)        | شاگرد         | زده کوونکی    | شاگرد                 |
+| 39 | Schülerin      | shoo-ler-in         | Student (female)      | شاگردہ        | زده کوونکې    | شاگردہ                |
+| 40 | Heft           | heft                | Notebook              | کاپی          | کتابچه        | کاپی                  |
+| 41 | Stift          | shtift              | Pen                   | قلم           | قلم           | قلم                   |
+| 42 | Papier         | pah-peer            | Paper                 | کاغذ          | کاغذ          | کاغذ                  |
+| 43 | Uhr            | oor                 | Clock                 | گھڑی          | ساعت          | گھڑی                  |
+| 44 | Tag            | tahg                | Day                   | دن            | ورځ           | دن                    |
+| 45 | Nacht          | nahkt               | Night                 | رات           | شپه           | رات                   |
+| 46 | Heute          | hoy-teh             | Today                 | آج            | نن            | آج                    |
+| 47 | Morgen         | mor-gen             | Tomorrow              | کل            | سبا           | کل                    |
+| 48 | Gestern        | ges-tern            | Yesterday             | کل (گزرا ہوا) | پرون          | کل                    |
+| 49 | Woche          | voh-heh             | Week                  | ہفتہ          | اونۍ          | ہفتہ                  |
+| 50 | Jahr           | yahr                | Year                  | سال           | کال           | سال                   |
+| 51  | Zeit         | tsayt          | Time        | وقت     | وخت           | وقت                   |
+| 52  | Stunde       | shtoon-deh     | Hour        | گھنٹہ   | ساعت          | گھنٹہ                 |
+| 53  | Minute       | mee-noo-teh    | Minute      | منٹ     | دقیقه         | منٹ                   |
+| 54  | Sekunde      | zeh-koon-deh   | Second      | سیکنڈ   | ثانیه         | سیکنڈ                 |
+| 55  | Heute        | hoy-teh        | Today       | آج      | نن            | آج                    |
+| 56  | Montag       | mon-tahg       | Monday      | پیر     | دوشنبه        | پیر                   |
+| 57  | Dienstag     | deens-tahg     | Tuesday     | منگل    | سه شنبه       | منگل                  |
+| 58  | Mittwoch     | mit-vokh       | Wednesday   | بدھ     | چهارشنبه      | بدھ                   |
+| 59  | Donnerstag   | don-er-stahg   | Thursday    | جمعرات  | پنجشنبه       | جمعرات                |
+| 60  | Freitag      | fry-tahg       | Friday      | جمعہ    | جمعه          | جمعہ                  |
+| 61  | Samstag      | zahms-tahg     | Saturday    | ہفتہ    | شنبه          | ہفتہ                  |
+| 62  | Sonntag      | zon-tahg       | Sunday      | اتوار   | یکشنبه        | اتوار                 |
+| 63  | Eins         | ayns           | One         | ایک     | یو            | ایک                   |
+| 64  | Zwei         | tsvy           | Two         | دو      | دوه           | دو                    |
+| 65  | Drei         | dry            | Three       | تین     | درې           | تین                   |
+| 66  | Vier         | feer           | Four        | چار     | څلور          | چار                   |
+| 67  | Fünf         | fuenf          | Five        | پانچ    | پنځه          | پانچ                  |
+| 68  | Sechs        | zeks           | Six         | چھ      | شپږ           | چھ                    |
+| 69  | Sieben       | zee-ben        | Seven       | سات     | اوه           | سات                   |
+| 70  | Acht         | ahkt           | Eight       | آٹھ     | اته           | آٹھ                   |
+| 71  | Neun         | noyn           | Nine        | نو      | نه            | نو                    |
+| 72  | Zehn         | tsayn          | Ten         | دس      | لس            | دس                    |
+| 73  | Hundert      | hoon-dert      | Hundred     | سو      | سل            | سو                    |
+| 74  | Eins hundert | ayns hoon-dert | One hundred | ایک سو  | سل            | ایک سو                |
+| 75  | Tausend      | tau-send       | Thousand    | ہزار    | زره           | ہزار                  |
+| 76  | Rot          | roht           | Red         | لال     | سور           | لال                   |
+| 77  | Blau         | blaoo          | Blue        | نیلا    | شین           | نیلا                  |
+| 78  | Grün         | gruen          | Green       | سبز     | شنه           | سبز                   |
+| 79  | Gelb         | gelb           | Yellow      | پیلا    | زيړ           | پیلا                  |
+| 80  | Schwarz      | shvarts        | Black       | کالا    | تور           | کالا                  |
+| 81  | Weiß         | vice           | White       | سفید    | سپین          | سفید                  |
+| 82  | Grau         | grao           | Grey        | سرمئی   | خړ            | بھورا                 |
+| 83  | Braun        | brow-n         | Brown       | بھورا   | نسواري        | بھورا                 |
+| 84  | Orange       | o-ransh        | Orange      | نارنجی  | نارنجي        | نارنجی                |
+| 85  | Rosa         | roh-za         | Pink        | گلابی   | ګلابي         | گلابی                 |
+| 86  | Schön        | shern          | Beautiful   | خوبصورت | ښکلی          | خوبصورت               |
+| 87  | Klein        | klayn          | Small       | چھوٹا   | کوچنی         | چھوٹا                 |
+| 88  | Groß         | grohs          | Big         | بڑا     | غټ            | بڑا                   |
+| 89  | Alt          | alt            | Old         | پرانا   | زوړ           | پرانا                 |
+| 90  | Jung         | yoong          | Young       | جوان    | ځوان          | جوان                  |
+| 91  | Warm         | varm           | Warm        | گرم     | ګرم           | گرم                   |
+| 92  | Kalt         | kalt           | Cold        | ٹھنڈا   | ساړه          | ٹھنڈا                 |
+| 93  | Gut          | goot           | Good        | اچھا    | ښه            | اچھا                  |
+| 94  | Schlecht     | shlekht        | Bad         | برا     | بد            | برا                   |
+| 95  | Glücklich    | gluek-likh     | Happy       | خوش     | خوشحاله       | خوش                   |
+| 96  | Traurig      | trau-rig       | Sad         | اداس    | خپه           | اداس                  |
+| 97  | Hunger       | hoong-er       | Hunger      | بھوک    | وږی           | بھوک                  |
+| 98  | Durst        | doorst         | Thirst      | پیاس    | تږی           | پیاس                  |
+| 99  | Arbeit       | ar-byt         | Work/Job    | کام     | کار           | کام                   |
+| 100 | Pause        | pau-zeh        | Break       | وقفہ    | وقفه          | وقفہ                  |`;
+
+        const basicVocabularyData = parseVocabularyData(basicVocabularyText);
+
+        // Intermediate vocabulary data from intermediate.txt
+        const intermediateVocabularyText = `| #   | German       | Pronunciation | English          | Urdu         | Pashto (پښتو) | Hindi (اردو رسم الخط) |
+| --- | ------------ | ------------- | ---------------- | ------------ | ------------- | --------------------- |
+| 101 | Stadt        | shtaht        | City             | شہر          | ښار           | شہر                   |
+| 102 | Land         | lahnd         | Country          | ملک          | هېواد         | ملک                   |
+| 103 | Dorf         | dorf          | Village          | گاؤں         | کلي           | گاؤں                  |
+| 104 | Straße       | shtra-seh     | Street           | سڑک          | کوڅه          | سڑک                   |
+| 105 | Weg          | vehg          | Path/Way         | راستہ        | لار           | راستہ                 |
+| 106 | Platz        | plahts        | Square/Place     | جگہ          | ځای           | جگہ                   |
+| 107 | Park         | park          | Park             | پارک         | پارک          | پارک                  |
+| 108 | Hotel        | hoh-tel       | Hotel            | ہوٹل         | هوټل          | ہوٹل                  |
+| 109 | Restaurant   | res-tow-rahnt | Restaurant       | ریستوران     | رستورانت      | ریستوران              |
+| 110 | Bahnhof      | bahn-hof      | Train station    | ریلوے اسٹیشن | د پټلۍ ټرمینل | ریلوے اسٹیشن          |
+| 111 | Flughafen    | floog-hah-fen | Airport          | ہوائی اڈہ    | هوايي ډګر     | ہوائی اڈہ             |
+| 112 | Polizei      | po-lee-tsai   | Police           | پولیس        | پولیس         | پولیس                 |
+| 113 | Krankenhaus  | krank-haus    | Hospital         | ہسپتال       | روغتون        | ہسپتال                |
+| 114 | Apotheke     | ap-oh-teh-keh | Pharmacy         | دوا خانہ     | داروخانه      | دوا خانہ              |
+| 115 | Arzt         | ahrts         | Doctor           | ڈاکٹر        | ډاکټر         | ڈاکٹر                 |
+| 116 | Lehrer       | lay-rer       | Teacher (male)   | استاد        | ښوونکی        | استاد                 |
+| 117 | Lehrerin     | lay-rer-in    | Teacher (female) | استانی       | ښوونکې        | استانی                |
+| 118 | Freundschaft | froint-shaft  | Friendship       | دوستی        | دوستي         | دوستی                 |
+| 119 | Liebe        | lee-beh       | Love             | محبت         | مینه          | محبت                  |
+| 120 | Glück        | gluek         | Luck             | خوش قسمتی    | بخت           | خوش قسمتی             |
+| 121 | Ärger        | air-ger       | Anger            | غصہ          | غصه           | غصہ                   |
+| 122 | Freude       | froy-duh      | Joy              | خوشی         | خوښي          | خوشی                  |
+| 123 | Freiheit     | fry-hyt       | Freedom          | آزادی        | ازادي         | آزادی                 |
+| 124 | Sicherheit   | zi-cher-hite  | Safety           | حفاظت        | امنیت         | حفاظت                 |
+| 125 | Arbeit       | ar-bait       | Work             | کام          | کار           | کام                   |
+| 126 | Urlaub       | oor-lahp      | Vacation         | تعطیلات      | رخصتي         | تعطیلات               |
+| 127 | Einkauf      | in-kauf       | Purchase         | خریداری      | خریدونه       | خریداری               |
+| 128 | Essen        | es-en         | Food             | کھانا        | خواړه         | کھانا                 |
+| 129 | Trinken      | trin-ken      | Drink            | پینا         | څښل           | پینا                  |
+| 130 | Kaffee       | kah-feh       | Coffee           | کافی         | قهوه          | کافی                  |
+| 131 | Tee          | teh           | Tea              | چائے         | چای           | چائے                  |
+| 132 | Wasser       | vah-ser       | Water            | پانی         | اوبه          | پانی                  |
+| 133 | Saft         | zaft          | Juice            | رس           | جوس           | رس                    |
+| 134 | Suppe        | zoop-eh       | Soup             | سوپ          | سوپ           | سوپ                   |
+| 135 | Brot         | broht         | Bread            | روٹی         | ډوډۍ          | روٹی                  |
+| 136 | Käse         | keh-zeh       | Cheese           | پنیر         | پنیر          | پنیر                  |
+| 137 | Fleisch      | flysh         | Meat             | گوشت         | غوښه          | گوشت                  |
+| 138 | Obst         | ohpst         | Fruit            | پھل          | مېوه          | پھل                   |
+| 139 | Gemüse       | ge-moo-zeh    | Vegetable        | سبزی         | سبزي          | سبزی                  |
+| 140 | Salat        | zah-laat      | Salad            | سلاد         | سلاد          | سلاد                  |
+| 141 | Zucker       | tsoo-ker      | Sugar            | چینی         | بوره          | چینی                  |
+| 142 | Salz         | zalts         | Salt             | نمک          | مالګه         | نمک                   |
+| 143 | Pfeffer      | pfef-fer      | Pepper           | مرچ          | مرچ           | مرچ                   |
+| 144 | Öl           | uel           | Oil              | تیل          | تیلو          | تیل                   |
+| 145 | Butter       | boot-er       | Butter           | مکھن         | مکھن          | مکھن                  |
+| 146 | Mehl         | mayl          | Flour            | آٹا          | اوړه          | آٹا                   |
+| 147 | Reis         | ryes          | Rice             | چاول         | وریجې         | چاول                  |
+| 148 | Nudeln       | noo-deln      | Noodles          | نوڈلز        | نوډلې         | نوڈلز                 |
+| 149 | Kartoffel    | kar-tof-fel   | Potato           | آلو          | کچالو         | آلو                   |
+| 150 | Tomate       | toh-mah-teh   | Tomato           | ٹماٹر        | رومیانو       | ٹماٹر                 |
+| 151 | Zwiebel     | tsvee-bel          | Onion            | پیاز           | پیاز          | پیاز                  |
+| 152 | Knoblauch   | knob-laukh         | Garlic           | لہسن           | هوږه          | لہسن                  |
+| 153 | Fisch       | fish               | Fish             | مچھلی          | ماهي          | مچھلی                 |
+| 154 | Ei          | eye                | Egg              | انڈا           | هګۍ           | انڈا                  |
+| 155 | Milch       | milkh              | Milk             | دودھ           | شيدې          | دودھ                  |
+| 156 | Honig       | ho-nikh            | Honey            | شہد            | شات           | شہد                   |
+| 157 | Kuchen      | koo-khen           | Cake             | کیک            | کیک           | کیک                   |
+| 158 | Eis         | ays                | Ice cream        | آئسکریم        | آيسکريم       | آئسکریم               |
+| 159 | Frühstück   | froosh-took        | Breakfast        | ناشتہ          | ناشته         | ناشتہ                 |
+| 160 | Mittagessen | mit-tahg-ess-en    | Lunch            | دوپہر کا کھانا | غرمنۍ         | دوپہر کا کھانا        |
+| 161 | Abendessen  | ah-bent-ess-en     | Dinner           | رات کا کھانا   | ماښامنۍ       | رات کا کھانا          |
+| 162 | Tisch       | tish               | Table            | میز            | مېز           | میز                   |
+| 163 | Stuhl       | shtool             | Chair            | کرسی           | څوکۍ          | کرسی                  |
+| 164 | Bett        | bet                | Bed              | بستر           | چپرکټ         | بستر                  |
+| 165 | Tür         | tuer               | Door             | دروازہ         | دروازه        | دروازہ                |
+| 166 | Fenster     | fen-ster           | Window           | کھڑکی          | کړکۍ          | کھڑکی                 |
+| 167 | Haus        | haus               | House            | گھر            | کور           | گھر                   |
+| 168 | Zimmer      | tsi-mer            | Room             | کمرہ           | خونه          | کمرہ                  |
+| 169 | Küche       | koo-he             | Kitchen          | باورچی خانہ    | پخلنځی        | باورچی خانہ           |
+| 170 | Bad         | baht               | Bathroom         | غسل خانہ       | تشناب         | غسل خانہ              |
+| 171 | Garten      | gar-ten            | Garden           | باغ            | باغ           | باغ                   |
+| 172 | Balkon      | bal-kohn           | Balcony          | بالکونی        | بالکنی        | بالکونی               |
+| 173 | Wand        | vahnd              | Wall             | دیوار          | دېوال         | دیوار                 |
+| 174 | Boden       | boh-den            | Floor            | فرش            | فرش           | فرش                   |
+| 175 | Decke       | de-keh             | Ceiling/Blanket  | چھت / کمبل     | چت / کمبل     | چھت / کمبل            |
+| 176 | Lampe       | lam-peh            | Lamp             | بتی            | څراغ          | بتی                   |
+| 177 | Licht       | likht              | Light            | روشنی          | رڼا           | روشنی                 |
+| 178 | Fernseher   | fern-ze-her        | TV               | ٹی وی          | تلويزيون      | ٹی وی                 |
+| 179 | Computer    | kom-pyoo-ter       | Computer         | کمپیوٹر        | کمپیوټر       | کمپیوٹر               |
+| 180 | Telefon     | teh-le-fohn        | Telephone        | ٹیلیفون        | ټیلفون        | ٹیلیفون               |
+| 181 | Handy       | hen-dee            | Mobile Phone     | موبائل         | موبایل        | موبائل                |
+| 182 | Uhr         | oor                | Clock/Watch      | گھڑی           | ساعت          | گھڑی                  |
+| 183 | Buch        | bookh              | Book             | کتاب           | کتاب          | کتاب                  |
+| 184 | Heft        | heft               | Notebook         | کاپی           | کتابچه        | کاپی                  |
+| 185 | Stift       | shtift             | Pen              | قلم            | قلم           | قلم                   |
+| 186 | Papier      | pah-peer           | Paper            | کاغذ           | کاغذ          | کاغذ                  |
+| 187 | Schule      | shoo-leh           | School           | اسکول          | ښوونځی        | اسکول                 |
+| 188 | Universität | oo-nee-ver-zee-tät | University       | یونیورسٹی      | پوهنتون       | یونیورسٹی             |
+| 189 | Lehrer      | lay-rer            | Teacher          | استاد          | ښوونکی        | استاد                 |
+| 190 | Schüler     | shoo-ler           | Student (male)   | طالب علم       | زده کوونکی    | طالب علم              |
+| 191 | Schülerin   | shoo-ler-in        | Student (female) | طالبہ          | زده کوونکې    | طالبہ                 |
+| 192 | Aufgabe     | owf-gah-beh        | Task             | کام            | دنده          | کام                   |
+| 193 | Prüfung     | prü-fung           | Exam             | امتحان         | امتحان        | امتحان                |
+| 194 | Frage       | frah-geh           | Question         | سوال           | پوښتنه        | سوال                  |
+| 195 | Antwort     | ant-vort           | Answer           | جواب           | ځواب          | جواب                  |
+| 196 | Sprache     | shpra-khe          | Language         | زبان           | ژبه           | زبان                  |
+| 197 | Wort        | vort               | Word             | لفظ            | کلمه          | لفظ                   |
+| 198 | Satz        | zahts              | Sentence         | جملہ           | جمله          | جملہ                  |
+| 199 | Lernen      | ler-nen            | To learn         | سیکھنا         | زده کول       | سیکھنا                |
+| 200 | Lesen       | lay-zen            | To read          | پڑھنا          | لوستل         | پڑھنا                 |`;
+
+        const intermediateVocabularyData = parseVocabularyData(intermediateVocabularyText);
+
+        // Advanced vocabulary data from advance.txt
+        const advancedVocabularyText = `| #   | German         | Pronunciation | English          | Urdu          | Pashto (پښتو) | Hindi (اردو رسم الخط) |
+| --- | -------------- | ------------- | ---------------- | ------------- | ------------- | --------------------- |
+| 201 | Ich            | ikh           | I                | میں           | زه            | میں                   |
+| 202 | Du             | doo           | You (informal)   | تم            | ته            | تم                    |
+| 203 | Er             | air           | He               | وہ (مرد)      | هغه           | وہ                    |
+| 204 | Sie            | zee           | She/You (formal) | وہ / آپ       | هغه / تاسې    | وہ / آپ               |
+| 205 | Wir            | veer          | We               | ہم            | موږ           | ہم                    |
+| 206 | Ihr            | eer           | You (plural)     | تم لوگ        | تاسې          | تم لوگ                |
+| 207 | Sie (plural)   | zee           | They             | وہ لوگ        | هغوی          | وہ لوگ                |
+| 208 | Mein           | mine          | My               | میرا          | زما           | میرا                  |
+| 209 | Dein           | dine          | Your             | تمہارا        | ستا           | تمہارا                |
+| 210 | Sein           | zine          | His              | اس کا         | د هغه         | اس کا                 |
+| 211 | Ihr (feminine) | eer           | Her              | اس کی         | د هغې         | اس کی                 |
+| 212 | Unser          | oon-ser       | Our              | ہمارا         | زموږ          | ہمارا                 |
+| 213 | Mutter         | moo-ter       | Mother           | ماں           | مور           | ماں                   |
+| 214 | Vater          | fa-ter        | Father           | باپ           | پلار          | باپ                   |
+| 215 | Bruder         | broo-der      | Brother          | بھائی         | ورور          | بھائی                 |
+| 216 | Schwester      | shves-ter     | Sister           | بہن           | خور           | بہن                   |
+| 217 | Sohn           | zon           | Son              | بیٹا          | زوی           | بیٹا                  |
+| 218 | Tochter        | tokh-ter      | Daughter         | بیٹی          | لور           | بیٹی                  |
+| 219 | Frau           | frau          | Woman/Wife       | عورت / بیوی   | ښځه           | عورت / بیوی           |
+| 220 | Mann           | mahn          | Man/Husband      | آدمی / شوہر   | سړی           | آدمی / شوہر           |
+| 221 | Kind           | kind          | Child            | بچہ           | ماشوم         | بچہ                   |
+| 222 | Freund         | froind        | Friend (male)    | دوست          | ملګری         | دوست                  |
+| 223 | Freundin       | froin-din     | Friend (female)  | سہیلی         | ملګرې         | سہیلی                 |
+| 224 | Heute          | hoy-te        | Today            | آج            | نن            | آج                    |
+| 225 | Morgen         | mor-gen       | Tomorrow         | کل            | سبا           | کل                    |
+| 226 | Gestern        | ges-tern      | Yesterday        | کل (گزرا ہوا) | پرون          | کل (گزرا ہوا)         |
+| 227 | Montag         | mon-tahg      | Monday           | پیر           | دوشنبه        | پیر                   |
+| 228 | Dienstag       | deens-tahg    | Tuesday          | منگل          | سه‌شنبه       | منگل                  |
+| 229 | Mittwoch       | mit-vokh      | Wednesday        | بدھ           | چهارشنبه      | بدھ                   |
+| 230 | Donnerstag     | don-ers-tahg  | Thursday         | جمعرات        | پنج‌شنبه      | جمعرات                |
+| 231 | Freitag        | fry-tahg      | Friday           | جمعہ          | جمعه          | جمعہ                  |
+| 232 | Samstag        | zam-stahg     | Saturday         | ہفتہ          | شنبه          | ہفتہ                  |
+| 233 | Sonntag        | zon-tahg      | Sunday           | اتوار         | يکشنبه        | اتوار                 |
+| 234 | Januar         | ya-noo-ar     | January          | جنوری         | جنوري         | جنوری                 |
+| 235 | Februar        | feh-broo-ar   | February         | فروری         | فبروري        | فروری                 |
+| 236 | März           | mehrts        | March            | مارچ          | مارچ          | مارچ                  |
+| 237 | April          | ah-pril       | April            | اپریل         | اپريل         | اپریل                 |
+| 238 | Mai            | my            | May              | مئی           | مۍ            | مئی                   |
+| 239 | Juni           | yoo-nee       | June             | جون           | جون           | جون                   |
+| 240 | Juli           | yoo-lee       | July             | جولائی        | جولای         | جولائی                |
+| 241 | August         | ow-goost      | August           | اگست          | اګست          | اگست                  |
+| 242 | September      | zehp-tem-ber  | September        | ستمبر         | سپتمبر        | ستمبر                 |
+| 243 | Oktober        | ok-toh-ber    | October          | اکتوبر        | اکتوبر        | اکتوبر                |
+| 244 | November       | no-vem-ber    | November         | نومبر         | نومبر         | نومبر                 |
+| 245 | Dezember       | de-tsem-ber   | December         | دسمبر         | دسمبر         | دسمبر                 |
+| 246 | Rot            | roht          | Red              | لال           | سور           | لال                   |
+| 247 | Blau           | blao          | Blue             | نیلا          | آبي           | نیلا                  |
+| 248 | Grün           | gruen         | Green            | سبز           | شین           | سبز                   |
+| 249 | Gelb           | gelb          | Yellow           | پیلا          | زيړ           | پیلا                  |
+| 250 | Schwarz        | shvarts       | Black            | کالا          | تور           | کالا                  |
+| 201 | schlafen       | shlaa-fen         | to sleep          | سونا         | ويده کېدل          | سونا                  |
+| 202 | essen          | ess-en            | to eat            | کھانا        | خوړل               | کھانا                 |
+| 203 | trinken        | trin-ken          | to drink          | پینا         | څښل                | پینا                  |
+| 204 | laufen         | laow-fen          | to run            | دوڑنا        | منډه وهل           | دوڑنا                 |
+| 205 | gehen          | gay-hen           | to go             | جانا         | تلل                | جانا                  |
+| 206 | sehen          | zay-hen           | to see            | دیکھنا       | لیدل               | دیکھنا                |
+| 207 | hören          | hoo-ren           | to hear           | سننا         | اورېدل             | سننا                  |
+| 208 | sprechen       | shprekh-en        | to speak          | بولنا        | خبرې کول           | بولنا                 |
+| 209 | schreiben      | shraib-en         | to write          | لکھنا        | ليکل               | لکھنا                 |
+| 210 | lesen          | lay-zen           | to read           | پڑھنا        | لوستل              | پڑھنا                 |
+| 211 | lernen         | lair-nen          | to learn          | سیکھنا       | زده کول            | سیکھنا                |
+| 212 | lehren         | lay-ren           | to teach          | پڑھانا       | ښوول               | پڑھانا                |
+| 213 | arbeiten       | ar-bai-ten        | to work           | کام کرنا     | کار کول            | کام کرنا              |
+| 214 | spielen        | shpee-len         | to play           | کھیلنا       | لوبې کول           | کھیلنا                |
+| 215 | kaufen         | kau-fen           | to buy            | خریدنا       | اخیستل             | خریدنا                |
+| 216 | verkaufen      | fer-kau-fen       | to sell           | بیچنا        | پلورل              | بیچنا                 |
+| 217 | bezahlen       | be-tsa-len        | to pay            | ادا کرنا     | پیسے ورکول         | ادا کرنا              |
+| 218 | fragen         | fra-gen           | to ask            | پوچھنا       | پوښتنه کول         | پوچھنا                |
+| 219 | antworten      | ant-vor-ten       | to answer         | جواب دینا    | ځواب ورکول         | جواب دینا             |
+| 220 | machen         | ma-khen           | to make/do        | کرنا         | کول                | کرنا                  |
+| 221 | öffnen         | öf-nen            | to open           | کھولنا       | پرانستل            | کھولنا                |
+| 222 | schließen      | shlee-sen         | to close          | بند کرنا     | تړل                | بند کرنا              |
+| 223 | kommen         | ko-men            | to come           | آنا          | راتلل              | آنا                   |
+| 224 | bleiben        | blai-ben          | to stay           | رہنا         | پاتې کېدل          | رہنا                  |
+| 225 | wohnen         | vo-nen            | to live/reside    | رہنا         | اوسېدل             | رہنا                  |
+| 226 | fahren         | faa-ren           | to drive          | چلانا        | چلول               | چلانا                 |
+| 227 | fliegen        | flee-gen          | to fly            | اڑنا         | الوتل              | اڑنا                  |
+| 228 | schwimmen      | shvi-men          | to swim           | تیرنا        | لمبل               | تیرنا                 |
+| 229 | sitzen         | zit-sen           | to sit            | بیٹھنا       | ناست               | بیٹھنا                |
+| 230 | stehen         | shte-hen          | to stand          | کھڑا ہونا    | ولاړ کېدل          | کھڑا ہونا             |
+| 231 | fallen         | fa-len            | to fall           | گرنا         | لوېدل              | گرنا                  |
+| 232 | beginnen       | be-gin-en         | to begin          | شروع کرنا    | پیل کول            | شروع کرنا             |
+| 233 | enden          | en-den            | to end            | ختم کرنا     | پای ته رسول        | ختم کرنا              |
+| 234 | schlafen gehen | shlaa-fen gay-hen | go to sleep       | سونے جانا    | د ویده کېدو ته تلل | سونے جانا             |
+| 235 | frühstücken    | froo-shtoo-ken    | to eat breakfast  | ناشتہ کرنا   | ناشتې کول          | ناشتہ کرنا            |
+| 236 | kochen         | ko-khen           | to cook           | پکانا        | پخول               | پکانا                 |
+| 237 | schneiden      | shnai-den         | to cut            | کاٹنا        | پرېکول             | کاٹنا                 |
+| 238 | waschen        | va-shen           | to wash           | دھونا        | مینځل              | دھونا                 |
+| 239 | putzen         | poot-sen          | to clean          | صاف کرنا     | صفا کول            | صاف کرنا              |
+| 240 | bauen          | bau-en            | to build          | بنانا        | جوړول              | بنانا                 |
+| 241 | zeigen         | tsai-gen          | to show           | دکھانا       | ښودل               | دکھانا                |
+| 242 | tragen         | tra-gen           | to carry          | اٹھانا       | وړل                | اٹھانا                |
+| 243 | lieben         | lee-ben           | to love           | محبت کرنا    | مینه کول           | محبت کرنا             |
+| 244 | hassen         | ha-sen            | to hate           | نفرت کرنا    | کرکه کول           | نفرت کرنا             |
+| 245 | lachen         | la-khen           | to laugh          | ہنسنا        | خندل               | ہنسنا                 |
+| 246 | weinen         | vai-nen           | to cry            | رونا         | ژړل                | رونا                  |
+| 247 | helfen         | hel-fen           | to help           | مدد کرنا     | مرسته کول          | مدد کرنا              |
+| 248 | warten         | var-ten           | to wait           | انتظار کرنا  | انتظار کول         | انتظار کرنا           |
+| 249 | rufen          | roo-fen           | to call           | بلانا        | غږ کول             | بلانا                 |
+| 250 | denken         | den-ken           | to think          | سوچنا        | فکر کول            | سوچنا                 |
+| 251 | wissen         | vi-sen            | to know (fact)    | جاننا        | پوهېدل             | جاننا                 |
+| 252 | kennen         | ke-nen            | to know (person)  | پہچاننا      | پېژندل             | پہچاننا               |
+| 253 | glauben        | glau-ben          | to believe        | یقین کرنا    | باور کول           | یقین کرنا             |
+| 254 | suchen         | zoo-khen          | to search         | تلاش کرنا    | لټول               | تلاش کرنا             |
+| 255 | finden         | fin-den           | to find           | پانا         | موندل              | پانا                  |
+| 256 | vergessen      | fer-ge-sen        | to forget         | بھول جانا    | هېرول              | بھول جانا             |
+| 257 | erinnern       | e-rin-ern         | to remember       | یاد کرنا     | یادول              | یاد کرنا              |
+| 258 | beginnen       | be-gin-en         | to start          | شروع کرنا    | پیل کول            | شروع کرنا             |
+| 259 | gewinnen       | ge-vin-en         | to win            | جیتنا        | ګټل                | جیتنا                 |
+| 260 | verlieren      | fer-lee-ren       | to lose           | ہارنا        | بایلل              | ہارنا                 |
+| 261 | bezahlen       | be-tsa-len        | to pay            | ادا کرنا     | پیسے ورکول         | ادا کرنا              |
+| 262 | bringen        | bring-en          | to bring          | لانا         | راوړل              | لانا                  |
+| 263 | nehmen         | nay-men           | to take           | لینا         | اخیستل             | لینا                  |
+| 264 | geben          | gay-ben           | to give           | دینا         | ورکول              | دینا                  |
+| 265 | zeigen         | tsai-gen          | to show           | دکھانا       | ښودل               | دکھانا                |
+| 266 | benutzen       | be-noot-sen       | to use            | استعمال کرنا | کارول              | استعمال کرنا          |
+| 267 | verstehen      | fer-shtay-hen     | to understand     | سمجھنا       | پوهېدل             | سمجھنا                |
+| 268 | erklären       | air-klay-ren      | to explain        | وضاحت کرنا   | تشریح کول          | وضاحت کرنا            |
+| 269 | fragen stellen | fra-gen shtel-len | to ask a question | سوال کرنا    | پوښتنه کول         | سوال کرنا             |
+| 270 | antwort geben  | ant-vort gay-ben  | to give an answer | جواب دینا    | ځواب ورکول         | جواب دینا             |
+| 271 | reisen         | rai-zen           | to travel         | سفر کرنا     | سفر کول            | سفر کرنا              |
+| 272 | besuchen       | be-zoo-khen       | to visit          | ملنے جانا    | لیدنه کول          | ملنے جانا             |
+| 273 | bleiben        | blai-ben          | to stay           | رہنا         | پاتې کېدل          | رہنا                  |
+| 274 | treffen        | tref-fen          | to meet           | ملنا         | ليدل               | ملنا                  |
+| 275 | bringen        | bring-en          | to bring          | لانا         | راوړل              | لانا                  |
+| 276 | senden         | zen-den           | to send           | بھیجنا       | لېږل               | بھیجنا                |
+| 277 | holen          | ho-len            | to fetch          | لانا         | راوړل              | لانا                  |
+| 278 | hoffen         | hof-fen           | to hope           | امید کرنا    | هیله کول           | امید کرنا             |
+| 279 | versuchen      | fer-zoo-khen      | to try            | کوشش کرنا    | هڅه کول            | کوشش کرنا             |
+| 280 | beginnen       | be-gin-en         | to begin          | شروع کرنا    | پیل کول            | شروع کرنا             |
+| 281 | bleiben        | blai-ben          | to stay           | ٹھہرنا       | پاتې کېدل          | ٹھہرنا                |
+| 282 | leben          | lay-ben           | to live           | جینا         | ژوند کول           | جینا                  |
+| 283 | sterben        | shter-ben         | to die            | مرنا         | مړ کېدل            | مرنا                  |
+| 284 | wachsen        | vakh-sen          | to grow           | بڑھنا        | لویېدل             | بڑھنا                 |
+| 285 | schneiden      | shnai-den         | to cut            | کاٹنا        | پرېکول             | کاٹنا                 |
+| 286 | warten         | var-ten           | to wait           | انتظار کرنا  | انتظار کول         | انتظار کرنا           |
+| 287 | zeigen         | tsai-gen          | to show           | دکھانا       | ښودل               | دکھانا                |
+| 288 | bezahlen       | be-tsa-len        | to pay            | ادائیگی کرنا | پیسے ورکول         | ادائیگی کرنا          |
+| 289 | verlieren      | fer-lee-ren       | to lose           | گم کرنا      | بایلل              | گم کرنا               |
+| 290 | gewinnen       | ge-vin-en         | to win            | جیتنا        | ګټل                | جیتنا                 |
+| 291 | hören          | hoo-ren           | to listen         | سننا         | اورېدل             | سننا                  |
+| 292 | riechen        | ree-khen          | to smell          | سونگھنا      | بوی کول            | سونگھنا               |
+| 293 | fühlen         | foo-len           | to feel           | محسوس کرنا   | احساس کول          | محسوس کرنا            |
+| 294 | berühren       | be-roo-ren        | to touch          | چھونا        | لمس کول            | چھونا                 |
+| 295 | denken         | den-ken           | to think          | سوچنا        | فکر کول            | سوچنا                 |
+| 296 | glauben        | glau-ben          | to believe        | یقین کرنا    | باور کول           | یقین کرنا             |
+| 297 | hoffen         | hof-fen           | to hope           | امید رکھنا   | هیله لرل           | امید رکھنا            |
+| 298 | träumen        | troi-men          | to dream          | خواب دیکھنا  | خوب لیدل           | خواب دیکھنا           |
+| 299 | erinnern       | e-rin-ern         | to remember       | یاد کرنا     | یادول              | یاد کرنا              |
+| 300 | vergessen      | fer-ge-sen        | to forget         | بھولنا       | هېرول              | بھولنا                |`;
+
+        const advancedVocabularyData = parseVocabularyData(advancedVocabularyText);
+
+        // Function to populate a vocabulary table
+        function populateVocabularyTable(tableBodyId, data) {
+            const tableBody = document.getElementById(tableBodyId);
+            tableBody.innerHTML = '';
+            
+            data.forEach(item => {
+                const row = document.createElement('tr');
+                
+                // German cell with audio button
+                const germanCell = document.createElement('td');
+                const germanDiv = document.createElement('div');
+                germanDiv.className = 'german-text';
+                germanDiv.innerHTML = `
+                    <button class="audio-btn" data-text="${item.german}">
+                        <i class="fas fa-volume-up"></i>
+                    </button>
+                    ${item.german}
+                `;
+                germanCell.appendChild(germanDiv);
+                
+                // Pronunciation cell
+                const pronunciationCell = document.createElement('td');
+                pronunciationCell.textContent = item.pronunciation;
+                
+                // English cell
+                const englishCell = document.createElement('td');
+                englishCell.textContent = item.english;
+                
+                // Urdu cell
+                const urduCell = document.createElement('td');
+                urduCell.textContent = item.urdu;
+                
+                // Pashto cell
+                const pashtoCell = document.createElement('td');
+                pashtoCell.textContent = item.pashto;
+                
+                // Hindi cell
+                const hindiCell = document.createElement('td');
+                hindiCell.textContent = item.hindi;
+                
+                row.appendChild(germanCell);
+                row.appendChild(pronunciationCell);
+                row.appendChild(englishCell);
+                row.appendChild(urduCell);
+                row.appendChild(pashtoCell);
+                row.appendChild(hindiCell);
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Add audio functionality to all audio buttons in this table
+            document.querySelectorAll(`#${tableBodyId} .audio-btn`).forEach(button => {
+                button.addEventListener('click', function() {
+                    const text = this.getAttribute('data-text');
+                    speakText(text, this);
+                });
+            });
+        }
+
+        // Text-to-speech function with female German voice
+        function speakText(text, button) {
+            // Stop any currently playing speech
+            window.speechSynthesis.cancel();
+            
+            // Remove playing class from all buttons
+            document.querySelectorAll('.audio-btn').forEach(btn => {
+                btn.classList.remove('playing');
+            });
+            
+            // Add playing class to current button
+            button.classList.add('playing');
+            
+            // Create speech synthesis
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'de-DE';
+            utterance.rate = 0.9;
+            utterance.pitch = 1.1; // Slightly higher pitch for female voice
+            
+            // Try to find a female German voice
+            const voices = speechSynthesis.getVoices();
+            let germanFemaleVoice = voices.find(voice => 
+                voice.lang === 'de-DE' && 
+                (voice.name.includes('female') || voice.name.includes('Female') || 
+                 voice.name.includes('Anna') || voice.name.includes('Petra') ||
+                 voice.name.includes('Vicki') || voice.name.includes('Google Deutsch') ||
+                 voice.name.includes('Microsoft Hedda'))
+            );
+            
+            // If no specific female voice found, use any German voice
+            if (!germanFemaleVoice) {
+                germanFemaleVoice = voices.find(voice => voice.lang === 'de-DE');
+            }
+            
+            if (germanFemaleVoice) {
+                utterance.voice = germanFemaleVoice;
+            }
+            
+            // When speech ends, remove playing class
+            utterance.onend = function() {
+                button.classList.remove('playing');
+            };
+            
+            // Speak the text
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // Menu dropdown
+        const menuBtn = document.getElementById('menuBtn');
+        const dropdown = document.getElementById('dropdown');
+        
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdown.classList.toggle('active');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+
+
+
+        // Level buttons functionality
+        document.querySelectorAll('.level-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('.level-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all tables
+                document.querySelectorAll('.table-container').forEach(table => {
+                    table.classList.remove('active');
+                });
+                
+                // Show the selected table
+                const level = this.getAttribute('data-level');
+                document.getElementById(`${level}Table`).classList.add('active');
+            });
+        });
+
+        // Populate the tables when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            populateVocabularyTable('basicTableBody', basicVocabularyData);
+            populateVocabularyTable('intermediateTableBody', intermediateVocabularyData);
+            populateVocabularyTable('advancedTableBody', advancedVocabularyData);
+        });
+
+        // Load voices when they become available
+        speechSynthesis.addEventListener('voiceschanged', () => {
+            // Re-populate the tables to ensure audio buttons use the latest voices
+            populateVocabularyTable('basicTableBody', basicVocabularyData);
+            populateVocabularyTable('intermediateTableBody', intermediateVocabularyData);
+            populateVocabularyTable('advancedTableBody', advancedVocabularyData);
+        });
+    </script>
+</body>
+</html>
